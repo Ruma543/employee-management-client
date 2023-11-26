@@ -11,6 +11,9 @@ import AllEmployee from '../Pages/Dashboard/HR/AllEmployee';
 import DetailsPage from '../Pages/Dashboard/HR/DetailsPage';
 import PaymentHistory from '../Pages/Dashboard/Employee/PaymentHistory';
 import WorkSheet from '../Pages/Dashboard/Employee/WorkSheet';
+import Progress from '../Pages/Dashboard/HR/Progress';
+import PrivateRoute from './PrivateRoute';
+import AdminRoute from './AdminRoute';
 
 const Routes = createBrowserRouter([
   {
@@ -38,11 +41,19 @@ const Routes = createBrowserRouter([
   },
   {
     path: '/dashboard',
-    element: <Dashboard></Dashboard>,
+    element: (
+      <PrivateRoute>
+        <Dashboard></Dashboard>
+      </PrivateRoute>
+    ),
     children: [
       {
         path: 'verifiedEmployee',
-        element: <VerifiedEmployee></VerifiedEmployee>,
+        element: (
+          <AdminRoute>
+            <VerifiedEmployee></VerifiedEmployee>
+          </AdminRoute>
+        ),
       },
       {
         path: 'allEmployee',
@@ -55,6 +66,10 @@ const Routes = createBrowserRouter([
       {
         path: 'workSheet',
         element: <WorkSheet></WorkSheet>,
+      },
+      {
+        path: 'progress',
+        element: <Progress></Progress>,
       },
       {
         path: 'allEmployee/details/:email',

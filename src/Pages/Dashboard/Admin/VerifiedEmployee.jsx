@@ -5,12 +5,14 @@ import { FcApproval } from 'react-icons/fc';
 import { Link } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import SectionTitle from '../../../Shared/SectionTitle/SectionTitle';
+import useAuth from '../../../Hook/useAuth';
 
 const VerifiedEmployee = () => {
+  const { user } = useAuth();
   const [verifiedEmployee, setVerifiedEmployee] = useState([]);
   const axiosSecure = useAxiosSecure();
   useEffect(() => {
-    axiosSecure.get('/employees/admin').then(res => {
+    axiosSecure.get(`/employees/employeeFind/${user?.email}`).then(res => {
       console.log(res.data);
       setVerifiedEmployee(res.data);
     });

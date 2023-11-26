@@ -50,8 +50,6 @@ const AllEmployee = () => {
     <div>
       <h3>All Employees {allEmployee.length}</h3>
       <SectionTitle
-        // subHeading="add new"
-        // heading={'New Item'}
         heading="Our All Employee"
         subHeading={'Our employee our pride'}
       ></SectionTitle>
@@ -80,12 +78,6 @@ const AllEmployee = () => {
                   id={id}
                 ></Cart>
               ))}
-              {/* <PaymentModal
-                openModal={openModal}
-                closeModal={closeModal}
-                id={id}
-                item={item}
-              ></PaymentModal> */}
             </Table.Body>
           </Table>
         </div>

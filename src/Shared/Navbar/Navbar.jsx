@@ -16,53 +16,52 @@ import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
 import useAuth from '../../Hook/useAuth';
 import { Link, NavLink } from 'react-router-dom';
+import Swal from 'sweetalert2';
 
-// const navlinks = [
-//   <li>
-//     <NavLink
-//       to="/"
-//       className={({ isActive, isPending }) =>
-//         isActive
-//           ? 'text-red-700 underline lg:text-white font-semibold '
-//           : isPending
-//           ? 'pending'
-//           : ''
-//       }
-//     >
-//       Home
-//     </NavLink>
-//   </li>,
-//   <li>
-//     <NavLink
-//       to="/contact"
-//       className={({ isActive, isPending }) =>
-//         isActive
-//           ? 'text-red-700 underline lg:text-white font-semibold '
-//           : isPending
-//           ? 'pending'
-//           : ''
-//       }
-//     >
-//       Contact Us
-//     </NavLink>
-//   </li>,
-//   <li>
-//     <NavLink
-//       to="/dashboard"
-//       className={({ isActive, isPending }) =>
-//         isActive
-//           ? 'text-red-700 underline lg:text-white font-semibold '
-//           : isPending
-//           ? 'pending'
-//           : ''
-//       }
-//     >
-//       Dashboard
-//     </NavLink>
-//   </li>
-// ];
-const pages = ['Dashboard', 'Contact', 'Blog'];
-const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
+const pages = [
+  <>
+    <NavLink
+      to="/"
+      className={({ isActive, isPending }) =>
+        isActive
+          ? 'text-red-700 underline mx-4 lg:text-white font-semibold '
+          : isPending
+          ? 'pending'
+          : ''
+      }
+    >
+      Home
+    </NavLink>
+
+    <NavLink
+      to="/contact"
+      className={({ isActive, isPending }) =>
+        isActive
+          ? 'text-red-700 underline mx-4 lg:text-white font-semibold '
+          : isPending
+          ? 'pending'
+          : ''
+      }
+    >
+      Contact Us
+    </NavLink>
+
+    <NavLink
+      to="/dashboard"
+      className={({ isActive, isPending }) =>
+        isActive
+          ? 'text-red-700 underline mx-4 lg:text-white font-semibold '
+          : isPending
+          ? 'pending'
+          : ''
+      }
+    >
+      Dashboard
+    </NavLink>
+  </>,
+];
+
+const settings = ['Dashboard', 'Logout'];
 
 function Navbar() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -88,21 +87,20 @@ function Navbar() {
   const handleLogOut = () => {
     logOut()
       .then(() => {
-        return alert('logout user');
-        //  Swal.fire({
-        //    position: 'top-end',
-        //    icon: 'success',
-        //    title: 'user logout successfully',
-        //    showConfirmButton: false,
-        //    timer: 1500,
-        //  });
+        Swal.fire({
+          position: 'top-end',
+          icon: 'success',
+          title: 'user logout successfully',
+          showConfirmButton: false,
+          timer: 1500,
+        });
       })
       .catch(error => console.log(error));
     // console.log('clicked');
   };
 
   return (
-    <AppBar position="static">
+    <AppBar position="static" sx={{ backgroundColor: '#be2edd80' }}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
