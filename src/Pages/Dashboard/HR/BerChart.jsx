@@ -1,54 +1,26 @@
 // import React from 'react';
+import { Tooltip } from 'flowbite-react';
 import React, { PureComponent } from 'react';
-import {
-  BarChart,
-  Bar,
-  XAxis,
-  YAxis,
-  CartesianGrid,
-  Tooltip,
-  Legend,
-  ResponsiveContainer,
-} from 'recharts';
+import { BarChart, Bar, ResponsiveContainer, XAxis, YAxis } from 'recharts';
 
 const BerChart = ({ employeeData }) => {
-  console.log(employeeData);
-  console.log(employeeData.length);
-
-  const barChartData = employeeData.map(data => {
-    return { name: data.month, pv: data.salary };
-  });
+  const barChartData = employeeData.map(data => ({
+    name: data.month,
+    pv: parseInt(data.salary),
+  }));
+  console.log(barChartData);
 
   return (
-    <>
-      {/* <h3>{employeeData.length}</h3> */}
-      <BarChart
-        // width="100%"
-        // height="100%"
-        width={688}
-        height={300}
-        data={barChartData}
-        margin={{
-          // top: 5,
-          right: 30,
-          left: 20,
-          bottom: 5,
-        }}
-        barSize={40}
-      >
-        <h3>house</h3>
-        <XAxis
-          dataKey=" name"
-          scale="point"
-          padding={{ left: 10, right: 10 }}
-        />
-        <YAxis dataKey="pv" />
-        <Tooltip />
-        <Legend />
-        <CartesianGrid strokeDasharray="10 3" />
-        <Bar dataKey="pv" fill="#8884d8" background={{ fill: '#2d3436' }} />
-      </BarChart>
-    </>
+    <div className="my-7 w-2/5 mx-auto">
+      <ResponsiveContainer width={400} aspect={3}>
+        <BarChart data={barChartData} width={400} height={400}>
+          <XAxis dataKey="name"></XAxis>
+          <YAxis />
+          <Tooltip />
+          <Bar dataKey="pv" fill="#8883d8" />
+        </BarChart>
+      </ResponsiveContainer>
+    </div>
   );
 };
 

@@ -44,6 +44,10 @@ const DetailsPage = () => {
       ></SectionTitle>
       {/* {employeeData.length} */}
       <DetailsProfile profile={profile}></DetailsProfile>
+
+      <h3 className="text-center text-2xl font-semibold my-5">
+        Show a BarChart for Payment History
+      </h3>
       <BerChart employeeData={employeeData}></BerChart>
     </div>
   );
