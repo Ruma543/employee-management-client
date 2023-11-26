@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import useAuth from '../../../../Hook/useAuth';
 import useAxiosSecure from '../../../../Hook/useAxiosSecure';
 import { Button } from 'flowbite-react';
+import Swal from 'sweetalert2';
 
 const CheckoutForm = ({ item, closeModal, month, year, singleEmployee }) => {
   const stripe = useStripe();
@@ -77,7 +78,6 @@ const CheckoutForm = ({ item, closeModal, month, year, singleEmployee }) => {
         // Update room status in db
 
         const paymentInfo = {
-          // ...item,
           name: singleEmployee.name,
           email: singleEmployee.email,
           image: singleEmployee.image,
@@ -95,19 +95,13 @@ const CheckoutForm = ({ item, closeModal, month, year, singleEmployee }) => {
         console.log('payment info', res.data);
         if (res.data.insertedId) {
           console.log('payment successfully');
-          // update payment status
-          // axiosSecure
-          //   .patch(`//status/${item.roomId}`, {
-          //     status: true,
-          //   })
-          //   .then(res => {
-          //     console.log(res.data);
-          //     if (res.data.modifiedCount > 0) {
-          //       return alert('modified successfull');
-          //     }
-          //   });
-          // console.log(res.data);
-          // return res.data;
+          Swal.fire({
+            position: 'top-center',
+            icon: 'success',
+            title: 'Payment done successfully',
+            showConfirmButton: false,
+            timer: 1500,
+          });
         }
         setProcessing(false);
       }

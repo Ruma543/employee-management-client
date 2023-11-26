@@ -2,6 +2,7 @@ import { Button, Card, Checkbox, Label, TextInput } from 'flowbite-react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import useAuth from '../../Hook/useAuth';
 import { useForm } from 'react-hook-form';
+import Swal from 'sweetalert2';
 
 const Login = () => {
   const {
@@ -18,7 +19,13 @@ const Login = () => {
       const user = result.user;
       console.log(user);
       reset();
-      // return alert('log in successfull');
+      Swal.fire({
+        position: 'top-end',
+        icon: 'success',
+        title: 'user login successfully',
+        showConfirmButton: false,
+        timer: 1500,
+      });
 
       navigate(location.state ? location.state : '/');
     });

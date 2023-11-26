@@ -8,7 +8,7 @@ import SectionTitle from '../../../Shared/SectionTitle/SectionTitle';
 import useAuth from '../../../Hook/useAuth';
 
 const VerifiedEmployee = () => {
-  const { user } = useAuth();
+  const { user, loading } = useAuth();
   const [verifiedEmployee, setVerifiedEmployee] = useState([]);
   const axiosSecure = useAxiosSecure();
   useEffect(() => {
@@ -54,56 +54,60 @@ const VerifiedEmployee = () => {
         subHeading="our employee our pride"
         heading={'Our All Employee'}
       ></SectionTitle>
-      <div>
-        <div className="overflow-x-auto">
-          <Table striped>
-            <Table.Head>
-              <Table.HeadCell>Name</Table.HeadCell>
-              <Table.HeadCell>Designation</Table.HeadCell>
-              <Table.HeadCell>Make HR</Table.HeadCell>
-              <Table.HeadCell>Fire</Table.HeadCell>
-            </Table.Head>
-            <Table.Body className="divide-y">
-              {verifiedEmployee.map(item => (
-                <Table.Row
-                  key={item._id}
-                  className="bg-white dark:border-gray-700 dark:bg-gray-800"
-                >
-                  <Table.Cell>{item.name}</Table.Cell>
-                  <Table.Cell>{item.designation}</Table.Cell>
-                  {/* <Table.Cell>{item.bankAccount}</Table.Cell>
+      {loading ? (
+        <p>loading</p>
+      ) : (
+        <div>
+          <div className="overflow-x-auto">
+            <Table striped>
+              <Table.Head>
+                <Table.HeadCell>Name</Table.HeadCell>
+                <Table.HeadCell>Designation</Table.HeadCell>
+                <Table.HeadCell>Make HR</Table.HeadCell>
+                <Table.HeadCell>Fire</Table.HeadCell>
+              </Table.Head>
+              <Table.Body className="divide-y">
+                {verifiedEmployee.map(item => (
+                  <Table.Row
+                    key={item._id}
+                    className="bg-white dark:border-gray-700 dark:bg-gray-800"
+                  >
+                    <Table.Cell>{item.name}</Table.Cell>
+                    <Table.Cell>{item.designation}</Table.Cell>
+                    {/* <Table.Cell>{item.bankAccount}</Table.Cell>
                   <Table.Cell>{item.salary}</Table.Cell> */}
-                  <Table.Cell>
-                    {item.role !== 'employee' ? (
-                      <Button color="gray">{item.role}</Button>
-                    ) : (
-                      <Button
-                        onClick={() => handleMakeHr(item._id)}
-                        color="gray"
-                      >
-                        Make HR
-                      </Button>
-                    )}
-                  </Table.Cell>
+                    <Table.Cell>
+                      {item.role !== 'employee' ? (
+                        <Button color="gray">{item.role}</Button>
+                      ) : (
+                        <Button
+                          onClick={() => handleMakeHr(item._id)}
+                          color="gray"
+                        >
+                          Make HR
+                        </Button>
+                      )}
+                    </Table.Cell>
 
-                  <Table.Cell>
-                    {item.status === 'fired' ? (
-                      <Button color="gray">fired</Button>
-                    ) : (
-                      <Button
-                        onClick={() => handleFired(item._id)}
-                        color="gray"
-                      >
-                        verified employee
-                      </Button>
-                    )}
-                  </Table.Cell>
-                </Table.Row>
-              ))}
-            </Table.Body>
-          </Table>
+                    <Table.Cell>
+                      {item.status === 'fired' ? (
+                        <Button color="gray">fired</Button>
+                      ) : (
+                        <Button
+                          onClick={() => handleFired(item._id)}
+                          color="gray"
+                        >
+                          verified employee
+                        </Button>
+                      )}
+                    </Table.Cell>
+                  </Table.Row>
+                ))}
+              </Table.Body>
+            </Table>
+          </div>
         </div>
-      </div>
+      )}
     </div>
   );
 };

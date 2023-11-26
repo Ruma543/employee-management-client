@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React, { PureComponent, useEffect, useState } from 'react';
 import useAxiosSecure from '../../../Hook/useAxiosSecure';
 import { useParams } from 'react-router-dom';
 import useAuth from '../../../Hook/useAuth';
 import DetailsProfile from './DetailsProfile';
 import BerChart from './BerChart';
+import SectionTitle from '../../../Shared/SectionTitle/SectionTitle';
 // import DetailsProfile from './DetailsProfile';
 
 const DetailsPage = () => {
@@ -37,7 +38,11 @@ const DetailsPage = () => {
 
   return (
     <div>
-      {employeeData.length}
+      <SectionTitle
+        subHeading="All information of this Employee"
+        heading="Employee Information"
+      ></SectionTitle>
+      {/* {employeeData.length} */}
       <DetailsProfile profile={profile}></DetailsProfile>
       <BerChart employeeData={employeeData}></BerChart>
     </div>
