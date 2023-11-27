@@ -91,6 +91,7 @@ const CheckoutForm = ({ item, closeModal, month, year, singleEmployee }) => {
           year: year,
         };
         console.log(paymentInfo);
+
         const res = await axiosSecure.post('/payment', paymentInfo);
         console.log('payment info', res.data);
         if (res.data.insertedId) {
@@ -140,3 +141,58 @@ const CheckoutForm = ({ item, closeModal, month, year, singleEmployee }) => {
 };
 
 export default CheckoutForm;
+
+// import React, { useState, useEffect } from 'react';
+
+// const YourComponent = () => {
+//   const [selectedMonth, setSelectedMonth] = useState('');
+//   const [paidMonths, setPaidMonths] = useState([]);
+
+//   // Simulated data for paid months (this should ideally come from your backend)
+//   const paidMonthsData = ['Jan', 'Feb', 'Mar']; // Example: Months that are already paid
+
+//   useEffect(() => {
+//     // Set the paid months data
+//     setPaidMonths(paidMonthsData);
+//   }, []);
+
+//   const handleMonthSelection = (e) => {
+//     const selectedValue = e.target.value;
+//     setSelectedMonth(selectedValue);
+
+//     // If the selected month is in the paidMonths list, prevent further action
+//     if (paidMonths.includes(selectedValue)) {
+//       alert('This month has already been paid. Please select another month.');
+//       setSelectedMonth(''); // Reset the selection or take other action
+//     }
+//   };
+
+//   return (
+//     <div>
+//       <select
+//         id="month"
+//         name="month"
+//         required
+//         value={selectedMonth}
+//         onChange={handleMonthSelection}
+//       >
+//         <option disabled value="default"></option>
+//         <option value="Jan" disabled={paidMonths.includes('Jan')}>
+//           JAN
+//         </option>
+//         <option value="Feb" disabled={paidMonths.includes('Feb')}>
+//           FEB
+//         </option>
+//         <option value="Mar" disabled={paidMonths.includes('Mar')}>
+//           MAR
+//         </option>
+//         <option value="Apr" disabled={paidMonths.includes('Apr')}>
+//           APR
+//         </option>
+//         {/* Add more months as needed */}
+//       </select>
+//     </div>
+//   );
+// };
+
+// export default YourComponent;

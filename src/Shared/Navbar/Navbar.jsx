@@ -22,45 +22,45 @@ const pages = [
   <>
     <NavLink
       to="/"
-      className={({ isActive, isPending }) =>
-        isActive
-          ? 'text-red-700 underline mx-4 lg:text-white font-semibold '
-          : isPending
-          ? 'pending'
-          : ''
-      }
+      // className={({ isActive, isPending }) =>
+      //   isActive
+      //     ? 'text-red-700 underline  lg:text-white font-semibold '
+      //     : isPending
+      //     ? 'pending'
+      //     : ''
+      // }
     >
       Home
     </NavLink>
 
     <NavLink
       to="/contact"
-      className={({ isActive, isPending }) =>
-        isActive
-          ? 'text-red-700 underline mx-4 lg:text-white font-semibold '
-          : isPending
-          ? 'pending'
-          : ''
-      }
+      // className={({ isActive, isPending }) =>
+      //   isActive
+      //     ? 'text-red-700 underline  lg:text-white font-semibold '
+      //     : isPending
+      //     ? 'pending'
+      //     : ''
+      // }
     >
       Contact
     </NavLink>
 
     <NavLink
       to="/dashboard"
-      className={({ isActive, isPending }) =>
-        isActive
-          ? 'text-red-700 underline mx-4 lg:text-white font-semibold '
-          : isPending
-          ? 'pending'
-          : ''
-      }
+      // className={({ isActive, isPending }) =>
+      //   isActive
+      //     ? 'text-red-700 underline  lg:text-white  font-semibold '
+      //     : isPending
+      //     ? 'pending'
+      //     : ''
+      // }
     >
       Dashboard
     </NavLink>
   </>,
 ];
-const logo = 'https://i.ibb.co/0YS03CD/lo.png';
+// const logo = 'https://i.ibb.co/0YS03CD/lo.png';
 const settings = ['Dashboard', 'Logout'];
 
 function Navbar() {
@@ -114,7 +114,7 @@ function Navbar() {
   //   };
   // }, []);
   return (
-    <AppBar position="fixed" sx={{ backgroundColor: '#0a3d62', zIndex: 10 }}>
+    <AppBar position="sticky" sx={{ backgroundColor: '#0a3d62', zIndex: 10 }}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           {/* <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} /> */}
@@ -124,7 +124,7 @@ function Navbar() {
             component="a"
             href="#app-bar-with-responsive-menu"
             sx={{
-              mr: 2,
+              pr: 2,
               display: { xs: 'none', md: 'flex' },
               fontFamily: 'poppins',
               fontWeight: 700,
@@ -169,7 +169,7 @@ function Navbar() {
               {pages.map(page => (
                 <MenuItem
                   key={page}
-                  sx={{ my: 3, color: 'white', display: 'block' }}
+                  sx={{ my: 3, color: 'black', display: 'block' }}
                   onClick={handleCloseNavMenu}
                 >
                   <Typography textAlign="center" sx={{ my: 10 }}>
@@ -186,7 +186,7 @@ function Navbar() {
             component="a"
             href="#app-bar-with-responsive-menu"
             sx={{
-              mr: 2,
+              mr: 0,
               display: { xs: 'flex', md: 'none' },
               flexGrow: 1,
               fontFamily: 'poppins',
@@ -215,31 +215,26 @@ function Navbar() {
 
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
-              <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                {user ? (
-                  <>
-                    <Button onClick={handleLogOut} sx={{ color: 'white' }}>
-                      logout
-                    </Button>
+              {user ? (
+                <>
+                  <IconButton
+                    onClick={handleLogOut}
+                    sx={{ p: 1, color: 'white' }}
+                  >
+                    logout
+                  </IconButton>
+                  <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                     <Avatar alt="Remy Sharp" src={user.photoURL} />
-                  </>
-                ) : (
-                  <>
-                    <Link to="/login">
-                      <Button
-                        sx={{ color: 'white' }}
-                        // onClick={() => history.push('/login')}
-                      >
-                        login
-                      </Button>
-                    </Link>
-                    <Avatar
-                      alt="Remy Sharp"
-                      src="/static/images/avatar/2.jpg"
-                    />
-                  </>
-                )}
-              </IconButton>
+                  </IconButton>
+                </>
+              ) : (
+                <>
+                  <Link to="/login">
+                    <IconButton sx={{ color: 'white' }}>login</IconButton>
+                  </Link>
+                  <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+                </>
+              )}
             </Tooltip>
             <Menu
               sx={{ mt: '45px' }}
@@ -269,6 +264,7 @@ function Navbar() {
     </AppBar>
   );
 }
+export default Navbar;
 
 // import React from 'react';
 // import useAuth from '../../Hook/useAuth';
@@ -373,4 +369,7 @@ function Navbar() {
 //   );
 // };
 
-export default Navbar;
+// <Button onClick= sx={{ color: 'white' }}>
+//   logout
+// </Button>
+// <Avatar alt="Remy Sharp" src={user.photoURL} />

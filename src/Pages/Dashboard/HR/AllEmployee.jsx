@@ -48,7 +48,7 @@ const AllEmployee = () => {
   };
   return (
     <div>
-      <h3>All Employees {allEmployee.length}</h3>
+      {/* <h3>All Employees {allEmployee.length}</h3> */}
       <SectionTitle
         heading="Our All Employee"
         subHeading={'Our employee our pride'}

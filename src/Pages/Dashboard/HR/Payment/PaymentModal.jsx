@@ -10,6 +10,9 @@ import useAxiosSecure from '../../../../Hook/useAxiosSecure';
 const PaymentModal = ({ openModal, closeModal, item, id }) => {
   const stripePromise = loadStripe(import.meta.env.VITE_PAYMENT_GATEWAY_PK);
   const [selectedMonth, setSelectedMonth] = useState('');
+  // step-1
+  // const [paidMonths, setPaidMonths] = useState([]);
+
   const [selectedYear, setSelectedYear] = useState('');
   const [singleEmployee, setSingleEmployee] = useState({});
   const axiosSecure = useAxiosSecure();
@@ -20,6 +23,23 @@ const PaymentModal = ({ openModal, closeModal, item, id }) => {
       setSingleEmployee(res.data);
     });
   }, [id]);
+  // step-2
+  // useEffect(() => {
+  //   // Set the paid months data
+  //   setPaidMonths(paidMonthsData);
+  // }, []);
+
+  // step-3
+  // const handleMonthSelection = e => {
+  //   const selectedValue = e.target.value;
+  //   setSelectedMonth(selectedValue);
+
+  //   // If the selected month is in the paidMonths list, prevent further action
+  //   if (paidMonths.includes(selectedValue)) {
+  //     alert('This month has already been paid. Please select another month.');
+  //     setSelectedMonth(''); // Reset the selection or take other action
+  //   }
+  // };
   // console.log(singleEmployee);
   return (
     <>
@@ -50,10 +70,18 @@ const PaymentModal = ({ openModal, closeModal, item, id }) => {
                     id="month"
                     name="month"
                     required
+                    // step-4
+                    // onChange={handleMonthSelection}
                     onChange={e => setSelectedMonth(e.target.value)}
                   >
                     <option disabled value="default"></option>
-                    <option value="Jan">JAN</option>
+                    <option
+                      value="Jan"
+                      // step-5
+                      // disabled={paidMonths.includes('Jan')}
+                    >
+                      JAN
+                    </option>
                     <option value="Feb">FEB</option>
                     <option value="Mar">MAR</option>
                     <option value="Apr">APR</option>

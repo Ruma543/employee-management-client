@@ -24,7 +24,7 @@ const Testimonial = () => {
         heading="What Our Clients Say"
         subHeading="Users Satisfaction is our Main Goal"
       ></SectionTitleHome>
-      <div className="w-4/5 mx-auto lg:h-[60vh] ">
+      <div className="lg:w-4/5 w-full mx-auto lg:h-[60vh] ">
         <Swiper
           modules={[Navigation]}
           navigation={true}
@@ -34,7 +34,7 @@ const Testimonial = () => {
         >
           {review.map(item => (
             <SwiperSlide key={item._id} className="px-6 ">
-              <div className="grid gap-5 grid-cols-1 px-7 py-7 items-center w-3/5 mx-auto">
+              <div className="grid gap-5 grid-cols-1 px-7 py-7 items-center lg:w-3/5 w-4/5 mx-auto">
                 <div className="px-6 shadow-lg space-y-3 py-7 bg-white rounded-lg">
                   <h3 className="text-center text-2xl font-semibold">
                     {item.name}
