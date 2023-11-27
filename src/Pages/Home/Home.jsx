@@ -3,6 +3,7 @@ import Banner from './HomeComponent/Banner/Banner';
 import Service from './HomeComponent/Banner/Service';
 import Testimonial from './HomeComponent/Banner/Testimonial';
 import Footer from '../../Shared/Footer/Footer';
+import Drawer from '../Dashboard/Drawer';
 
 const Home = () => {
   return (
@@ -11,6 +12,7 @@ const Home = () => {
       <Service></Service>
       <Testimonial></Testimonial>
       <Footer></Footer>
+      {/* <Drawer></Drawer> */}
     </div>
   );
 };

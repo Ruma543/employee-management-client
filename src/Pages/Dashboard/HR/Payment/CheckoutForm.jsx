@@ -13,6 +13,7 @@ const CheckoutForm = ({ item, closeModal, month, year, singleEmployee }) => {
   const [clientSecret, setClientSecret] = useState('');
   const [processing, setProcessing] = useState(false);
   const [transactionId, setTransactionId] = useState('');
+  const [userPaymentData, setUserPaymentDAta] = useState([]);
   const axiosSecure = useAxiosSecure();
   console.log(singleEmployee);
   useEffect(() => {
@@ -29,6 +30,14 @@ const CheckoutForm = ({ item, closeModal, month, year, singleEmployee }) => {
         });
     }
   }, [axiosSecure, item]);
+
+  useEffect(() => {
+    axiosSecure.get(`/payment/${user.email}`).then(res => {
+      console.log(res.data);
+      setUserPaymentDAta(res.data);
+    });
+  }, []);
+  console.log(userPaymentData);
 
   const handleSubmit = async e => {
     e.preventDefault();
@@ -74,8 +83,6 @@ const CheckoutForm = ({ item, closeModal, month, year, singleEmployee }) => {
         console.log('transaction id', paymentIntent.id);
         setTransactionId(paymentIntent.id);
         // save payment information to the server
-
-        // Update room status in db
 
         const paymentInfo = {
           name: singleEmployee.name,

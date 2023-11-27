@@ -78,7 +78,7 @@ const PaymentModal = ({ openModal, closeModal, item, id }) => {
                     <option
                       value="Jan"
                       // step-5
-                      // disabled={paidMonths.includes('Jan')}
+                      // disabled={paidMonths.includes('JAN')}
                     >
                       JAN
                     </option>

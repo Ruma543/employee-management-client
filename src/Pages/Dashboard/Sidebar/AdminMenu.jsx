@@ -1,83 +1,70 @@
 import React from 'react';
+import {
+  FcApproval,
+  FcBrokenLink,
+  FcBullish,
+  FcBusinessman,
+  FcHome,
+  FcNews,
+} from 'react-icons/fc';
 import { NavLink } from 'react-router-dom';
+import { FaMoneyBillAlt } from 'react-icons/fa';
 
-const AdminMenu = () => {
+const AdminMenu = ({ open }) => {
+  const adminMenu = [
+    {
+      Name: 'Verified Employee',
+      path: '/dashboard/verifiedEmployee',
+      icon: <FcApproval />,
+    },
+    {
+      Name: 'All Employee',
+      path: '/dashboard/allEmployee',
+      icon: <FcBusinessman />,
+    },
+    {
+      Name: 'Payment History',
+      path: '/dashboard/paymentHistory',
+      icon: <FaMoneyBillAlt />,
+    },
+    {
+      Name: 'Progress',
+      path: '/dashboard/progress',
+      icon: <FcBullish />,
+    },
+
+    {
+      Name: 'Worksheet',
+      path: '/dashboard/workSheet',
+      icon: <FcNews />,
+    },
+    {
+      Name: 'Home',
+      path: '/',
+      icon: <FcHome />,
+    },
+  ];
+
   return (
     <div>
-      <>
-        <ul>
-          <li>
-            <NavLink
-              to="/dashboard/verifiedEmployee"
-              className={({ isActive, isPending }) =>
-                isActive
-                  ? 'text-red-700 underline  lg:text-white font-semibold '
-                  : isPending
-                  ? 'pending'
-                  : ''
-              }
-            >
-              Verified Employee
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
-              to="/dashboard/allEmployee"
-              className={({ isActive, isPending }) =>
-                isActive
-                  ? 'text-red-700 underline  lg:text-white font-semibold '
-                  : isPending
-                  ? 'pending'
-                  : ''
-              }
-            >
-              All Employee
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
-              to="/dashboard/paymentHistory"
-              className={({ isActive, isPending }) =>
-                isActive
-                  ? 'text-red-700 underline  lg:text-white font-semibold '
-                  : isPending
-                  ? 'pending'
-                  : ''
-              }
-            >
-              Payment History
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
-              to="/dashboard/progress"
-              className={({ isActive, isPending }) =>
-                isActive
-                  ? 'text-red-700 underline  lg:text-white font-semibold '
-                  : isPending
-                  ? 'pending'
-                  : ''
-              }
-            >
-              Progress
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
-              to="/dashboard/workSheet"
-              className={({ isActive, isPending }) =>
-                isActive
-                  ? 'text-red-700 underline  lg:text-white font-semibold '
-                  : isPending
-                  ? 'pending'
-                  : ''
-              }
-            >
-              Work Sheet
-            </NavLink>
-          </li>
-        </ul>
-      </>
+      <ul className="pt-6">
+        {adminMenu.map((link, index) => (
+          <NavLink
+            to={link.path}
+            key={link?.path}
+            sx={{ color: '#0a3d62' }}
+            className={`flex  rounded-md p-2 cursor-pointer hover:bg-light-white text-gray-300 text-sm items-center gap-x-4
+              ${link.gap ? 'mt-9' : 'mt-2'} ${
+              index === 0 && 'bg-light-white'
+            } `}
+          >
+            <span>{link.icon}</span>
+            <span className={`${!open && 'hidden'} origin-left duration-200`}>
+              {link.Name}
+            </span>
+          </NavLink>
+        ))}
+      </ul>
     </div>
   );
 };

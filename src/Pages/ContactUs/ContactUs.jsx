@@ -9,7 +9,7 @@ const ContactUs = () => {
     <div className="mt-20">
       {' '}
       <div
-        className="mt-20 lg:h-[90vh] lg:w-4/5 w-11/12 mx-auto"
+        className="mt-6 lg:h-[90vh] lg:w-4/5 w-4/5 mx-auto"
         style={{
           backgroundImage: `url(${contactImg})`,
           backgroundSize: 'cover',
