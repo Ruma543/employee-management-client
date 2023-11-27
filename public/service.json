@@ -24,3 +24,97 @@
     "title": "Performance Appraisal"
   }
 ]
+
+
+[
+  {
+    "name": "Rumana Amin",
+    "profession": "HR Manager",
+    "review": "Our employee management system is now streamlined and efficient thanks to the exceptional work of the web development team. The user-friendly interface has made our daily tasks a breeze. 5/5 stars!",
+    "rating": 5
+  },
+  {
+    "name": "Jhon Smith",
+    "profession": "IT Director",
+    "review": "The custom solutions provided by this company have significantly improved our employee data security. The web development team demonstrated professionalism and delivered on time. Excellent service! 4.5/5 stars.",
+    "rating": 4.5
+  },
+  {
+    "name": "Alex Johnson",
+    "profession": "Operations Manager",
+    "review": "The user interface is intuitive and easy to navigate. The web development team went above and beyond to meet our specific requirements. Our efficiency has soared since implementing their solutions. 4/5 stars.",
+    "rating": 4
+  },
+  {
+    "name": "Dona White",
+    "profession": "Finance Analyst",
+    "review": "The web development team exhibited great attention to detail in creating our employee payroll system. The platform is robust and error-free, making payroll processing a seamless experience. 4.5/5 stars.",
+    "rating": 4.5
+  },
+  {
+    "name": "Michael Brown",
+    "profession": "Training Coordinator",
+    "review": "The web development team exceeded our expectations in designing a user-friendly training module. The interactive features have enhanced our employee training programs. Kudos for a job well done! 5/5 stars.",
+    "rating": 5
+  },
+  {
+    "name": "Sarah Davis",
+    "profession": "Marketing Manager",
+    "review": "The responsive design and scalable architecture of our new employee portal are impressive. The web development team demonstrated technical expertise and delivered a top-notch solution. 4.5/5 stars.",
+    "rating": 4.5
+  },
+  {
+    "name": "Chris Wilson",
+    "profession": "Customer Support Lead",
+    "review": "The real-time analytics dashboard provided by the web development team has transformed our decision-making process. The team was responsive to our needs, and the end result is fantastic. 4/5 stars.",
+    "rating": 4
+  },
+  {
+    "name": "Olivia Miller",
+    "profession": "Sales Coordinator",
+    "review": "The seamless integration of the employee management system with our CRM has streamlined our sales processes. The web development team was attentive and responsive throughout the project. 4.5/5 stars.",
+    "rating": 4.5
+  },
+  {
+    "name": "David Lee",
+    "profession": "Quality Assurance Analyst",
+    "review": "Thorough testing and attention to detail by the web development team ensured a bug-free experience. Our QA processes have been greatly enhanced, thanks to their commitment to quality. 5/5 stars.",
+    "rating": 5
+  }
+]
+
+
+
+
+[
+  {
+    "service": "Software Testing",
+   
+    "image": "https://example.com/software_testing.jpg"
+  },
+  {
+    "service": "Website Design",
+    
+    "image": "https://example.com/website_design.jpg"
+  },
+  {
+    "service": "App Development",
+    
+    "image": "https://example.com/app_development.jpg"
+  },
+  {
+    "service": "UI/UX Design",
+   
+    "image": "https://example.com/ui_ux_design.jpg"
+  },
+  {
+    "service": "Backend Development",
+   
+    "image": "https://example.com/backend_development.jpg"
+  },
+  {
+    "service": "Database Management",
+   
+    "image": "https://example.com/database_management.jpg"
+  }
+]

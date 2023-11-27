@@ -6,6 +6,8 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { CardActionArea } from '@mui/material';
+import SectionTitle from '../../../../Shared/SectionTitle/SectionTitle';
+import SectionTitleHome from '../../../../Shared/SectionTitle/SectionTitleHome';
 
 const Service = () => {
   const [service, setService] = useState([]);
@@ -19,6 +21,11 @@ const Service = () => {
   console.log(service);
   return (
     <div className="my-6">
+      <SectionTitleHome
+        heading="Meet Our Service"
+        subHeading="Welcome to our website"
+      ></SectionTitleHome>
+      {/* <SectionTitle></SectionTitle> */}
       <div className="grid lg:grid-cols-3 grid-cols-1 space-y-6 my-6 gap-5 w-11/12 mx-auto">
         {service.map(item => (
           <div key={item._id}>

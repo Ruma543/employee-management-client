@@ -2,13 +2,16 @@ import axios from 'axios';
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import useAuth from '../../Hook/useAuth';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
+import { Button } from 'flowbite-react';
 
 const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_API;
 const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
+const registerimage = 'https://i.ibb.co/RP58FGj/register.jpg';
 const Registration = () => {
   const { createUser, profileUpdate } = useAuth();
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
@@ -52,35 +55,58 @@ const Registration = () => {
                   Swal.fire({
                     position: 'top-end',
                     icon: 'success',
-                    title: 'user add successfully',
+                    title: 'Employee add successfully',
                     showConfirmButton: false,
                     timer: 1500,
                   });
+                  navigate('/');
                 }
               });
           });
         })
-        .catch(error => console.log(error));
+        .catch(error => {
+          console.log(error);
+          Swal.fire({
+            icon: 'error',
+            title: 'Employee Information  is missing!',
+            showConfirmButton: true,
+          });
+        });
     }
   };
   return (
-    <div className="w-4/5 mx-auto bg-slate-100 my-5 px-6 py-7 grid grid-cols-2 ">
-      <div></div>
+    <div
+      className="lg:w-3/5 w-11/12 mx-auto rounded-lg shadow-lg my-5 px-6 py-7 grid  grid-cols-1 "
+      // style={{
+      //   backgroundImage: `url(${registerimage})`,
+      //   backgroundSize: 'cover',
+      //   // borderRadius: '50%',
+      //   overflow: 'hidden',
+      //   // transition: 'transform 0.3s ease-in-out',
+      //   // transform: isHovered ? 'scale(1.2)' : 'scale(1)',
+      // }}
+    >
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className="bg-purple-300 px-5 py-6 rounded-lg"
+        className="px-5 bg-black/90 py-6 rounded-lg text-white"
       >
-        <div className="grid grid-cols-2 gap-4 items-center ">
+        <p className="text-center text">
+          Already Register Please{' '}
+          <Link to="/login" className="text-blue-400">
+            Login
+          </Link>{' '}
+        </p>
+        <div className="grid lg:grid-cols-2 grid-cols-1 gap-4 items-center ">
           <div className="form-control w-full  space-y-3">
             <label className="label">
-              <span className="label-text">User Name</span>
+              <span className="label-text">Employee Name</span>
             </label>
             <input
               type="text"
               placeholder="Name"
               {...register('name', { required: true })}
               required
-              className=" w-full px-6 py-3 rounded-lg outline-none"
+              className=" w-full px-6 py-3 rounded-lg  text-black outline-none"
             />
             {errors.name && (
               <span className="text-red-400">Name is required</span>
@@ -88,22 +114,22 @@ const Registration = () => {
           </div>
           <div className="form-control w-full  space-y-3">
             <label className="label">
-              <span className="label-text">User Email</span>
+              <span className="label-text">Employee Email</span>
             </label>
             <input
               type="email"
               placeholder="Email"
               {...register('email', { required: true })}
               required
-              className=" w-full px-6 py-3 rounded-lg outline-none"
+              className=" w-full text-black px-6 py-3 rounded-lg outline-none"
             />
             {errors.email && (
               <span className="text-red-400">Email is required</span>
             )}
           </div>
         </div>
-        <div className="grid grid-cols-2 gap-4 items-center ">
-          <div className="form-control w-full my-6 space-y-3">
+        <div className="grid lg:grid-cols-2 grid-cols-1 gap-4 items-center ">
+          <div className="form-control w-full  space-y-3">
             <label className="label">
               <span className="label-text">Bank Account No.</span>
             </label>
@@ -112,13 +138,13 @@ const Registration = () => {
               placeholder="Bank Account No."
               {...register('account', { required: true })}
               required
-              className=" w-full px-6 py-3 rounded-lg outline-none"
+              className=" w-full px-6 text-black py-3 rounded-lg outline-none"
             />
             {errors.account && (
               <span className="text-red-400">Bank Account No. is required</span>
             )}
           </div>
-          <div className="form-control w-full my-6 space-y-3">
+          <div className="form-control w-full  space-y-3">
             <label className="label">
               <span className="label-text">Salary</span>
             </label>
@@ -127,21 +153,21 @@ const Registration = () => {
               placeholder="Salary"
               {...register('salary', { required: true })}
               required
-              className=" w-full px-6 py-3 rounded-lg outline-none"
+              className=" w-full px-6 py-3  text-black rounded-lg outline-none"
             />
             {errors.salary && (
               <span className="text-red-400">Salary is required</span>
             )}
           </div>
         </div>
-        <div className="grid grid-cols-2 gap-4 items-center ">
+        <div className="grid lg:grid-cols-2 grid-cols-1 gap-4 items-center ">
           <div className="form-control w-full  space-y-3">
             <label className="label">
               <span className="label-text">User Role</span>
             </label>
             <select
               {...register('role', { required: true })}
-              className=" w-full px-6 py-3 rounded-lg outline-none"
+              className=" w-full px-6 py-3 text-black rounded-lg outline-none"
               name="role"
               id=""
               defaultValue="default"
@@ -164,19 +190,19 @@ const Registration = () => {
               placeholder="Designation"
               {...register('designation', { required: true })}
               required
-              className=" w-full px-6 py-3 rounded-lg outline-none"
+              className=" w-full text-black px-6 py-3 rounded-lg outline-none"
             />
             {errors.designation && (
               <span className="text-red-400">Designation is required</span>
             )}
           </div>
         </div>
-        <div className="grid grid-cols-2 gap-4 items-center ">
-          <div className="form-control w-full">
+        <div className="grid lg:grid-cols-2 grid-cols-1 gap-4 items-center ">
+          <div className="form-control w-full mt-4">
             <input
               {...register('image', { required: true })}
               type="file"
-              className="file-input w-full max-w-xs"
+              className="file-input bg-green-500 w-full max-w-xs"
             />
             {errors.image && (
               <span className="text-red-400">Image upload is required</span>
@@ -197,19 +223,34 @@ const Registration = () => {
               placeholder="Password"
               {...register('password', { required: true })}
               required
-              className=" w-full px-6 py-3 rounded-lg outline-none"
+              className=" w-full text-black px-6 py-3 rounded-lg outline-none"
             />
             {errors.password && (
               <span className="text-red-400">Password is required</span>
             )}
+            {errors.password?.type === 'minLength' && (
+              <span className="text-red-400">
+                Password must be 6 characters
+              </span>
+            )}
+            {errors.password?.type === 'pattern' && (
+              <span className="text-red-400">
+                Password must be one uppercase & one special character
+              </span>
+            )}
           </div>
         </div>
-
-        <button className="btn px-3 py-2 text-white bg-green-500 hover:bg-green-600">
-          Registration
-        </button>
+        <div className="flex justify-center">
+          {' '}
+          <Button
+            className="bg-green-500 my-4 text-center hover:bg-green-800"
+            type="submit"
+          >
+            Registration
+          </Button>
+        </div>
+        {/* <button className=" px-3 py-2 my-4 text-white bg-green-500 hover:bg-green-800"></button> */}
       </form>
-      <Link to="/login">login</Link>
     </div>
   );
 };

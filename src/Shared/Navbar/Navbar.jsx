@@ -43,7 +43,7 @@ const pages = [
           : ''
       }
     >
-      Contact Us
+      Contact
     </NavLink>
 
     <NavLink
@@ -60,7 +60,7 @@ const pages = [
     </NavLink>
   </>,
 ];
-
+const logo = 'https://i.ibb.co/0YS03CD/lo.png';
 const settings = ['Dashboard', 'Logout'];
 
 function Navbar() {
@@ -99,11 +99,25 @@ function Navbar() {
     // console.log('clicked');
   };
 
+  // const [fix, setFix] = React.useState(false);
+  // React.useEffect(() => {
+  //   const setFixed = () => {
+  //     if (window.scrollY > 400) {
+  //       setFix(true);
+  //     } else {
+  //       setFix(false);
+  //     }
+  //   };
+  //   window.addEventListener('scroll', setFixed);
+  //   return () => {
+  //     window.removeEventListener('scroll', setFixed);
+  //   };
+  // }, []);
   return (
-    <AppBar position="static" sx={{ backgroundColor: '#be2edd80' }}>
+    <AppBar position="fixed" sx={{ backgroundColor: '#0a3d62', zIndex: 10 }}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
+          {/* <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} /> */}
           <Typography
             variant="h6"
             noWrap
@@ -112,14 +126,15 @@ function Navbar() {
             sx={{
               mr: 2,
               display: { xs: 'none', md: 'flex' },
-              fontFamily: 'monospace',
+              fontFamily: 'poppins',
               fontWeight: 700,
               letterSpacing: '.3rem',
               color: 'inherit',
               textDecoration: 'none',
             }}
           >
-            Employee
+            Catenation
+            {/* <img src={logo} alt="" /> */}
           </Typography>
 
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
@@ -152,13 +167,19 @@ function Navbar() {
               }}
             >
               {pages.map(page => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">{page}</Typography>
+                <MenuItem
+                  key={page}
+                  sx={{ my: 3, color: 'white', display: 'block' }}
+                  onClick={handleCloseNavMenu}
+                >
+                  <Typography textAlign="center" sx={{ my: 10 }}>
+                    {page}
+                  </Typography>
                 </MenuItem>
               ))}
             </Menu>
           </Box>
-          <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
+          {/* <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} /> */}
           <Typography
             variant="h5"
             noWrap
@@ -168,21 +189,24 @@ function Navbar() {
               mr: 2,
               display: { xs: 'flex', md: 'none' },
               flexGrow: 1,
-              fontFamily: 'monospace',
+              fontFamily: 'poppins',
               fontWeight: 700,
               letterSpacing: '.3rem',
               color: 'inherit',
               textDecoration: 'none',
             }}
           >
-            Employee
+            {' '}
+            Catenation
+            {/* <img src={logo} alt="" /> */}
+            {/* {logo} */}
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             {pages.map(page => (
               <Button
                 key={page}
                 onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: 'white', display: 'block' }}
+                sx={{ my: 3, mx: 15, color: 'white', display: 'block' }}
               >
                 {page}
               </Button>

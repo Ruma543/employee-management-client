@@ -66,7 +66,11 @@ const Routes = createBrowserRouter([
       },
       {
         path: 'paymentHistory',
-        element: <PaymentHistory></PaymentHistory>,
+        element: (
+          <PrivateRoute>
+            <PaymentHistory></PaymentHistory>
+          </PrivateRoute>
+        ),
       },
       {
         path: 'workSheet',
