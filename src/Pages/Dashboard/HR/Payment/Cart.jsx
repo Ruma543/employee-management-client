@@ -25,13 +25,13 @@ const Cart = ({
         <Table.Cell>{item.salary}</Table.Cell>
         <Table.Cell>
           {item.verified === true ? (
-            <Button color="gray">
+            <button color="gray">
               <FcApproval />
-            </Button>
+            </button>
           ) : (
-            <Button onClick={() => handleMakeVerified(item._id)} color="gray">
+            <button onClick={() => handleMakeVerified(item._id)} color="gray">
               <FcCancel />
-            </Button>
+            </button>
           )}
         </Table.Cell>
 

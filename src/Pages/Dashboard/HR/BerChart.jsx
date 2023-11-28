@@ -11,9 +11,9 @@ const BerChart = ({ employeeData }) => {
   console.log(barChartData);
 
   return (
-    <div className="my-7 w-2/5 mx-auto">
-      <ResponsiveContainer width={400} aspect={3}>
-        <BarChart data={barChartData} width={400} height={400}>
+    <div>
+      <ResponsiveContainer width={300} aspect={2}>
+        <BarChart data={barChartData} width={200} height={400}>
           <XAxis dataKey="name"></XAxis>
           <YAxis />
           <Tooltip />

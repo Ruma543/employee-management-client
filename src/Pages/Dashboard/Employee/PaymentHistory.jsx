@@ -32,19 +32,19 @@ const PaymentHistory = () => {
   // });
   // console.log(data);
   // const payments = data?.pages.reduce((acc, page) => {
-  //   return [...acc, ...page.payments];
+  //   return [...acc, page.payments];
   // }, []);
   // console.log(payments);
-
+  // const payments = 100;
   useEffect(() => {
-    axiosSecure.get(`/payment/${user.email}`).then(res => {
+    axiosSecure.get(`/payment/${user?.email}`).then(res => {
       console.log(res.data);
       const sortedPayHistory = res.data.sort((a, b) => {
         return a.month.localeCompare(b.month);
       });
       setPayHistory(sortedPayHistory);
     });
-  }, []);
+  }, [user]);
   console.log(payHistory);
   return (
     <div>

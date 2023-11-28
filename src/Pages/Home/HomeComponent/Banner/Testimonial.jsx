@@ -30,16 +30,19 @@ const Testimonial = () => {
           navigation={true}
           slidesPerView={1}
           spaceBetween={30}
-          className="mySwiper h-4/5 my-auto  bg-blue-300 "
+          className="mySwiper lg:h-4/5 my-auto  bg-blue-300 "
         >
           {review.map(item => (
-            <SwiperSlide key={item._id} className=" p-5 lg:py-10">
-              <div className="lg:w-3/5 w-4/5 mx-auto ">
-                <div className="px-6 shadow-lg space-y-3 py-7 bg-white rounded-lg">
+            <SwiperSlide
+              key={item._id}
+              className=" h-4/5 my-auto py-5 lg:py-10"
+            >
+              <div className="lg:w-3/5 h-full my-auto w-4/5 mx-auto ">
+                <div className="px-6 shadow-lg  space-y-3 py-7 bg-white rounded-lg">
                   <h3 className="text-center text-2xl font-semibold">
                     {item.name}
                   </h3>
-                  <h3 className="text-center text-xl font-semibold">
+                  <h3 className="text-center text-sm  font-semibold">
                     {item.profession}
                   </h3>
 

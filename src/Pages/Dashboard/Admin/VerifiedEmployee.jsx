@@ -49,7 +49,6 @@ const VerifiedEmployee = () => {
   };
   return (
     <div className="lg:w-11/12 mx-auto">
-      {/* <h3>{verifiedEmployee.length}</h3> */}
       <SectionTitle
         subHeading="our employee our pride"
         heading={'Our All Employee'}
@@ -58,7 +57,7 @@ const VerifiedEmployee = () => {
         <p>loading..</p>
       ) : (
         <div>
-          <div className="overflow-x-auto lg:w-11/12 mx-auto">
+          <div className="overflow-x-auto">
             <Table striped>
               <Table.Head>
                 <Table.HeadCell>Name</Table.HeadCell>
@@ -78,14 +77,14 @@ const VerifiedEmployee = () => {
                   <Table.Cell>{item.salary}</Table.Cell> */}
                     <Table.Cell>
                       {item.role !== 'employee' ? (
-                        <Button color="gray">{item.role}</Button>
+                        <button color="gray">{item.role}</button>
                       ) : (
-                        <Button
+                        <button
                           onClick={() => handleMakeHr(item._id)}
                           color="gray"
                         >
                           Make HR
-                        </Button>
+                        </button>
                       )}
                     </Table.Cell>
 

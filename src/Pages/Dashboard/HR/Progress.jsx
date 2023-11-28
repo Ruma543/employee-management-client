@@ -19,10 +19,9 @@ const Progress = () => {
     },
   });
   console.log(workSheet);
-  //
 
   const uniqueEmployee = Array.from(new Set(workSheet.map(item => item.name)));
-  // const uniqueMonths = Array.from(new Set(workSheet.map(item => item.month)));
+
   const uniqueMonths = Array.from(
     new Set(
       workSheet.map(
@@ -39,13 +38,13 @@ const Progress = () => {
   );
 
   return (
-    <div className="overflow-x-auto">
+    <div>
       <SectionTitle
         subHeading="All Submitted Work-Sheet"
         heading="All work-Sheet"
       ></SectionTitle>
-      <div>
-        <div className=" Lg:w-1/2 w-3/4 mx-auto flex">
+      <div className="w-11/12 mx-auto">
+        <div className=" lg:w-1/2 w-3/4 mx-auto flex">
           <Select
             value={selectedEmployee}
             onChange={e => setSelectedEmployee(e.target.value)}
@@ -70,28 +69,26 @@ const Progress = () => {
           </Select>
         </div>
       </div>
-      <Table className="w-11/12 mx-auto">
-        <Table.Head>
-          {/* name dropdown */}
-          <Table.HeadCell>Name dropdown</Table.HeadCell>
-          <Table.HeadCell>Date</Table.HeadCell>
-          <Table.HeadCell>Working Hour</Table.HeadCell>
-          <Table.HeadCell>Work Type</Table.HeadCell>
-        </Table.Head>
-        <Table.Body className="divide-y">
-          {filteredWorkSheet.map(item => (
-            <Table.Row
-              key={item._id}
-              className="bg-purple-300 dark:border-gray-700 dark:bg-gray-800"
-            >
-              <Table.Cell>{item.name}</Table.Cell>
-              <Table.Cell>{item.date}</Table.Cell>
-              <Table.Cell>{item.hour}</Table.Cell>
-              <Table.Cell>{item.task}</Table.Cell>
-            </Table.Row>
-          ))}
-        </Table.Body>
-      </Table>
+      <div className="overflow-x-auto">
+        <Table striped>
+          <Table.Head>
+            <Table.HeadCell>Name</Table.HeadCell>
+            <Table.HeadCell>Date</Table.HeadCell>
+            <Table.HeadCell>Working Hour</Table.HeadCell>
+            <Table.HeadCell>Work Type</Table.HeadCell>
+          </Table.Head>
+          <Table.Body className="divide-y w-4/5">
+            {filteredWorkSheet.map(item => (
+              <Table.Row key={item._id} className="w-4/5">
+                <Table.Cell>{item.name}</Table.Cell>
+                <Table.Cell>{item.date}</Table.Cell>
+                <Table.Cell>{item.hour}</Table.Cell>
+                <Table.Cell>{item.task}</Table.Cell>
+              </Table.Row>
+            ))}
+          </Table.Body>
+        </Table>
+      </div>
     </div>
   );
 };

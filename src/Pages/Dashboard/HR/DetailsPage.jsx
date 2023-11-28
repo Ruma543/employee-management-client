@@ -37,18 +37,20 @@ const DetailsPage = () => {
   }, []);
 
   return (
-    <div>
+    <div className="w-4/5 mx-auto">
       <SectionTitle
         subHeading="All information of this Employee"
         heading="Employee Information"
       ></SectionTitle>
-      {/* {employeeData.length} */}
+
       <DetailsProfile profile={profile}></DetailsProfile>
 
-      <h3 className="text-center text-2xl font-semibold my-5">
-        Show a BarChart for Payment History
-      </h3>
-      <BerChart employeeData={employeeData}></BerChart>
+      <div className="w-full">
+        <h3 className="text-center lg:text-2xl text-lg font-semibold my-5">
+          Show a BarChart for Payment History
+        </h3>
+        <BerChart employeeData={employeeData}></BerChart>
+      </div>
     </div>
   );
 };

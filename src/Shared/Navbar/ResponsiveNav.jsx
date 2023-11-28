@@ -114,11 +114,15 @@ function ResponsiveNav(props) {
                 sx={{
                   color: '#0a3d62',
                   mr: 4,
-                  display: 'flex',
-                  justify: 'around',
+                  p: 4,
+                  display: 'grid',
+                  gap: 5,
                 }}
               >
-                {link.Name}
+                <IconButton sx={{ p: 1, color: 'white', fontSize: '16px' }}>
+                  {' '}
+                  {link.Name}
+                </IconButton>
               </NavLink>
             ))}
           </Box>
@@ -131,10 +135,7 @@ function ResponsiveNav(props) {
                 >
                   Logout
                 </IconButton>
-                <IconButton
-                  // onClick={handleOpenUserMenu}
-                  sx={{ p: 0 }}
-                >
+                <IconButton sx={{ p: 2 }}>
                   <Avatar alt="Remy Sharp" src={user.photoURL} />
                 </IconButton>
               </>

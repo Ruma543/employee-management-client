@@ -9,7 +9,7 @@ const DetailsProfile = ({ profile }) => {
           src={profile.image}
           alt=""
         />
-        <div className="flex gap-5 justify-center">
+        <div className="flex lg:gap-5 lg:justify-center flex-col">
           <h2 className="text-xl font-semibold">{profile.name}</h2>
           <h2 className="text-xl font-semibold">{profile.designation}</h2>
         </div>

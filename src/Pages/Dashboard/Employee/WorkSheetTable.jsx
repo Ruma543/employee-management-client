@@ -4,7 +4,7 @@ import React from 'react';
 const WorkSheetTable = ({ work }) => {
   console.log(work);
   return (
-    <div className="overflow-x-auto">
+    <div className="overflow-x-auto ">
       <Table striped>
         <Table.Head>
           <Table.HeadCell>Name</Table.HeadCell>

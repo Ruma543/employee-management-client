@@ -39,7 +39,7 @@ const WorkSheet = () => {
         Swal.fire({
           position: 'top-end',
           icon: 'success',
-          title: 'user add successfully',
+          title: 'work add successfully',
           showConfirmButton: false,
           timer: 1500,
         });
@@ -68,7 +68,10 @@ const WorkSheet = () => {
         heading="Employee Worksheet"
         subHeading="Submit your work properly"
       ></SectionTitle>
-      <form onSubmit={handleSubmit} className="grid grid-cols-4 gap-4">
+      <form
+        onSubmit={handleSubmit}
+        className="grid w-4/5  gap-1 mx-auto grid-cols-4 lg:gap-4"
+      >
         <div className="max-w-md">
           <div className="mb-2 block">
             <Label htmlFor="task" value="Task" />

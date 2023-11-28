@@ -5,12 +5,20 @@ const Banner = () => {
   const [isHovered, setIsHovered] = useState(false);
   return (
     <div
-      className="h-[90vh] mt-17  w-full mx-auto grid lg:grid-cols-2 grid-cols-1"
+      className="h-[90vh] mt-17 py-5  w-full mx-auto grid lg:grid-cols-2 grid-cols-1"
       style={{ backgroundColor: '#0a3d62' }}
     >
-      <div>banner message</div>
+      <div className="flex flex-col items-center justify-center space-y-3 w-4/5 mx-auto">
+        <h3 className="text-center  text-white font-semibold  font-serif lg:text-3xl text-xl  ">
+          Empower your workforce with precision and care – where employee
+          management meets excellence.
+        </h3>
+        <button className="bg-green-700 text-white hover:bg-green-500 px-3 py-2">
+          About Us
+        </button>
+      </div>
       <div
-        className=" h-3/5 my-auto  w-4/5  mx-auto"
+        className=" h-4/5 my-auto  w-4/5  mx-auto"
         style={{
           backgroundImage: `url(${banner1})`,
           backgroundSize: 'cover',

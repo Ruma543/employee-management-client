@@ -12,7 +12,7 @@ const Subscribe = () => {
         }}
       >
         <div className="w-full h-full bg-black/50 p-10 flex flex-col justify-center items-center space-y-5 rounded-lg">
-          <h3 className="text-3xl text-white font-bold font-serif">
+          <h3 className="text-3xl text-white font-bold text-center font-serif">
             Subscribe to know anything about our Company.{' '}
           </h3>
           <input

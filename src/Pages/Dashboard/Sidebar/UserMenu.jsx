@@ -3,7 +3,7 @@ import { FaMoneyBillAlt } from 'react-icons/fa';
 import { FcHome, FcNews } from 'react-icons/fc';
 import { NavLink } from 'react-router-dom';
 
-const UserMenu = () => {
+const UserMenu = ({ open }) => {
   const userMenu = [
     {
       Name: 'Payment History',

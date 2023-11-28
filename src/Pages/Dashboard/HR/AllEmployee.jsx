@@ -57,8 +57,7 @@ const AllEmployee = () => {
     setOpenModal(false);
   };
   return (
-    <div>
-      {/* <h3>All Employees {allEmployee.length}</h3> */}
+    <div className="w-4/5 mx-auto">
       <SectionTitle
         heading="Our All Employee"
         subHeading={'Our employee our pride'}
@@ -66,7 +65,7 @@ const AllEmployee = () => {
       <div>
         <div className="overflow-x-auto">
           <Table striped>
-            <Table.Head>
+            <Table.Head className="text-left">
               <Table.HeadCell>Name</Table.HeadCell>
               <Table.HeadCell>Email</Table.HeadCell>
               <Table.HeadCell>Bank Account</Table.HeadCell>
