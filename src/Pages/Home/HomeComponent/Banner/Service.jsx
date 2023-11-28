@@ -22,10 +22,10 @@ const Service = () => {
   }, []);
   return (
     <div className="w-11/12 mx-auto">
-      {/* <SectionTitleHome
+      <SectionTitleHome
         heading="Meet Our Service"
         subHeading="Welcome to our website"
-      ></SectionTitleHome> */}
+      ></SectionTitleHome>
 
       <div className="grid lg:grid-cols-3 grid-cols-1 md:grid-cols-2 gap-5">
         {service.map(item => (

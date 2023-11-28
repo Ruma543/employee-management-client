@@ -5,12 +5,12 @@ const Banner = () => {
   const [isHovered, setIsHovered] = useState(false);
   return (
     <div
-      className="h-[80vh]   w-11/12 mx-auto grid lg:grid-cols-2 grid-cols-1"
+      className="h-[90vh] mt-17  w-full mx-auto grid lg:grid-cols-2 grid-cols-1"
       style={{ backgroundColor: '#0a3d62' }}
     >
       <div>banner message</div>
       <div
-        className=" h-4/5 my-auto  w-4/5  mx-auto"
+        className=" h-3/5 my-auto  w-4/5  mx-auto"
         style={{
           backgroundImage: `url(${banner1})`,
           backgroundSize: 'cover',

@@ -4,6 +4,7 @@ import Service from './HomeComponent/Banner/Service';
 import Testimonial from './HomeComponent/Banner/Testimonial';
 import Footer from '../../Shared/Footer/Footer';
 import Drawer from '../Dashboard/Drawer';
+import Subscribe from './HomeComponent/Subscribe';
 
 const Home = () => {
   return (
@@ -11,6 +12,7 @@ const Home = () => {
       <Banner></Banner>
       <Service></Service>
       <Testimonial></Testimonial>
+      <Subscribe></Subscribe>
       <Footer></Footer>
       {/* <Drawer></Drawer> */}
     </div>

@@ -22,6 +22,9 @@ const Dashboard = () => {
         className={` ${
           open ? 'w-72' : 'w-20 '
         } h-screen p-5  pt-8 relative duration-300`}
+        // className={` ${
+        //   open ? 'grid-cols-3' : 'grid-cols-1 '
+        // } h-full lg:p-5 p-2 pt-8 relative duration-300`}
         style={{ backgroundColor: '#0a3d62' }}
       >
         <FaArrowLeft
@@ -53,7 +56,7 @@ const Dashboard = () => {
           <UserMenu open={open}></UserMenu>
         )}
       </div>
-      <div className="h-screen flex-1 p-7">
+      <div className="h-screen lg:w-11/12 mx-auto  lg:p-7">
         <Outlet></Outlet>
       </div>
     </div>

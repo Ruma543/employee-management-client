@@ -5,7 +5,14 @@ import useAxiosSecure from '../../../../Hook/useAxiosSecure';
 import { Button } from 'flowbite-react';
 import Swal from 'sweetalert2';
 
-const CheckoutForm = ({ item, closeModal, month, year, singleEmployee }) => {
+const CheckoutForm = ({
+  item,
+  closeModal,
+  month,
+  year,
+  singleEmployee,
+  handleMonthSelection,
+}) => {
   const stripe = useStripe();
   const elements = useElements();
   const { user } = useAuth();
@@ -13,9 +20,10 @@ const CheckoutForm = ({ item, closeModal, month, year, singleEmployee }) => {
   const [clientSecret, setClientSecret] = useState('');
   const [processing, setProcessing] = useState(false);
   const [transactionId, setTransactionId] = useState('');
-  const [userPaymentData, setUserPaymentDAta] = useState([]);
+  // const [userPaymentData, setUserPaymentDAta] = useState([]);
   const axiosSecure = useAxiosSecure();
-  console.log(singleEmployee);
+  // console.log(singleEmployee);
+  // console.log(item);
   useEffect(() => {
     // console.log(item.salary);
     if (item?.salary > 0) {
@@ -31,13 +39,23 @@ const CheckoutForm = ({ item, closeModal, month, year, singleEmployee }) => {
     }
   }, [axiosSecure, item]);
 
-  useEffect(() => {
-    axiosSecure.get(`/payment/${user.email}`).then(res => {
-      console.log(res.data);
-      setUserPaymentDAta(res.data);
-    });
-  }, []);
-  console.log(userPaymentData);
+  // useEffect(() => {
+  //   axiosSecure.get(`/payment/${item?.email}`).then(res => {
+  //     console.log(res.data);
+  //     setUserPaymentDAta(res.data);
+  //   });
+  // }, []);
+  // console.log(userPaymentData);
+
+  // const isPaymentAlreadyMade = userPaymentData.some(
+  //   payment => payment.month === month && payment.year === year
+  // );
+
+  // if (isPaymentAlreadyMade) {
+  //   console.log('Payment already made for this month and year.');
+  //   // You can show a message to the user or take any other appropriate action
+  //   return;
+  // }
 
   const handleSubmit = async e => {
     e.preventDefault();
@@ -99,17 +117,19 @@ const CheckoutForm = ({ item, closeModal, month, year, singleEmployee }) => {
         };
         console.log(paymentInfo);
 
-        const res = await axiosSecure.post('/payment', paymentInfo);
-        console.log('payment info', res.data);
-        if (res.data.insertedId) {
-          console.log('payment successfully');
-          Swal.fire({
-            position: 'top-center',
-            icon: 'success',
-            title: 'Payment done successfully',
-            showConfirmButton: false,
-            timer: 1500,
-          });
+        if (month !== '') {
+          const res = await axiosSecure.post('/payment', paymentInfo);
+          console.log('payment info', res.data);
+          if (res.data.insertedId) {
+            console.log('payment successfully');
+            Swal.fire({
+              position: 'top-center',
+              icon: 'success',
+              title: 'Payment done successfully',
+              showConfirmButton: false,
+              timer: 1500,
+            });
+          }
         }
         setProcessing(false);
       }

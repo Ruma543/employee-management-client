@@ -218,25 +218,7 @@
 //             </Box>
 
 //             <Box sx={{ flexGrow: 0 }}>
-<Tooltip title="Open settings">
-  {user ? (
-    <>
-      <IconButton onClick={handleLogOut} sx={{ p: 1, color: 'white' }}>
-        logout
-      </IconButton>
-      <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-        <Avatar alt="Remy Sharp" src={user.photoURL} />
-      </IconButton>
-    </>
-  ) : (
-    <>
-      <Link to="/login">
-        <IconButton sx={{ color: 'white' }}>login</IconButton>
-      </Link>
-      <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
-    </>
-  )}
-</Tooltip>;
+// //
 //               <Menu
 //                 sx={{ mt: '45px' }}
 //                 id="menu-appbar"

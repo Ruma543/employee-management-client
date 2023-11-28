@@ -20,11 +20,11 @@ const Testimonial = () => {
   console.log(review);
   return (
     <div className="w-11/12 mx-auto">
-      {/* <SectionTitleHome
+      <SectionTitleHome
         heading="What Our Clients Say"
         subHeading="Users Satisfaction is our Main Goal"
-      ></SectionTitleHome> */}
-      <div className="lg:w-4/5 w-11/12 mx-auto lg:h-[60vh] ">
+      ></SectionTitleHome>
+      <div className="lg:w-4/5 w-11/12 mx-auto lg:h-[70vh] ">
         <Swiper
           modules={[Navigation]}
           navigation={true}
@@ -33,7 +33,7 @@ const Testimonial = () => {
           className="mySwiper h-4/5 my-auto  bg-blue-300 "
         >
           {review.map(item => (
-            <SwiperSlide key={item._id} className="">
+            <SwiperSlide key={item._id} className=" p-5 lg:py-10">
               <div className="lg:w-3/5 w-4/5 mx-auto ">
                 <div className="px-6 shadow-lg space-y-3 py-7 bg-white rounded-lg">
                   <h3 className="text-center text-2xl font-semibold">

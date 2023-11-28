@@ -11,7 +11,7 @@ const PaymentModal = ({ openModal, closeModal, item, id }) => {
   const stripePromise = loadStripe(import.meta.env.VITE_PAYMENT_GATEWAY_PK);
   const [selectedMonth, setSelectedMonth] = useState('');
   // step-1
-  // const [paidMonths, setPaidMonths] = useState([]);
+  const [paidMonths, setPaidMonths] = useState([]);
 
   const [selectedYear, setSelectedYear] = useState('');
   const [singleEmployee, setSingleEmployee] = useState({});
@@ -23,23 +23,37 @@ const PaymentModal = ({ openModal, closeModal, item, id }) => {
       setSingleEmployee(res.data);
     });
   }, [id]);
+
+  console.log(singleEmployee);
+  // console.log(item?.email);
   // step-2
+  useEffect(() => {
+    axiosSecure.get(`/payment/${item?.email}`).then(res => {
+      console.log(res.data);
+      setPaidMonths(res.data);
+    });
+  }, []);
+  // console.log(paidMonths);
+
   // useEffect(() => {
   //   // Set the paid months data
   //   setPaidMonths(paidMonthsData);
   // }, []);
 
   // step-3
-  // const handleMonthSelection = e => {
-  //   const selectedValue = e.target.value;
-  //   setSelectedMonth(selectedValue);
+  console.log(paidMonths);
+  const handleMonthSelection = e => {
+    const selectedValue = e.target.value;
+    setSelectedMonth(selectedValue);
 
-  //   // If the selected month is in the paidMonths list, prevent further action
-  //   if (paidMonths.includes(selectedValue)) {
-  //     alert('This month has already been paid. Please select another month.');
-  //     setSelectedMonth(''); // Reset the selection or take other action
-  //   }
-  // };
+    // If the selected month is in the paidMonths list, prevent further action
+    if (paidMonths.includes(selectedValue)) {
+      alert('This month has already been paid. Please select another month.');
+      setSelectedMonth('');
+      // Reset the selection or take other action
+    }
+  };
+  console.log(selectedMonth);
   // console.log(singleEmployee);
   return (
     <>
@@ -71,28 +85,50 @@ const PaymentModal = ({ openModal, closeModal, item, id }) => {
                     name="month"
                     required
                     // step-4
-                    // onChange={handleMonthSelection}
-                    onChange={e => setSelectedMonth(e.target.value)}
+                    onChange={handleMonthSelection}
+                    // onChange={e => setSelectedMonth(e.target.value)}
                   >
                     <option disabled value="default"></option>
                     <option
                       value="Jan"
                       // step-5
-                      // disabled={paidMonths.includes('JAN')}
+                      disabled={paidMonths.includes('JAN')}
                     >
                       JAN
                     </option>
-                    <option value="Feb">FEB</option>
-                    <option value="Mar">MAR</option>
-                    <option value="Apr">APR</option>
-                    <option value="May">MAY</option>
-                    <option value="Jun">JUN</option>
-                    <option value="Jul">JUL</option>
-                    <option value="Aug">AUG</option>
-                    <option value="Sep">SEP</option>
-                    <option value="Oct">OCT</option>
-                    <option value="Nov">NOV</option>
-                    <option value="Dec">DEC</option>
+                    <option value="Feb" disabled={paidMonths.includes('Feb')}>
+                      FEB
+                    </option>
+                    <option value="Mar" disabled={paidMonths.includes('Mar')}>
+                      MAR
+                    </option>
+                    <option value="Apr" disabled={paidMonths.includes('Apr')}>
+                      APR
+                    </option>
+                    <option value="May" disabled={paidMonths.includes('May')}>
+                      MAY
+                    </option>
+                    <option value="Jun" disabled={paidMonths.includes('Jun')}>
+                      JUN
+                    </option>
+                    <option value="Jul" disabled={paidMonths.includes('Jul')}>
+                      JUL
+                    </option>
+                    <option value="Aug" disabled={paidMonths.includes('Aug')}>
+                      AUG
+                    </option>
+                    <option value="Sep" disabled={paidMonths.includes('Sep')}>
+                      SEP
+                    </option>
+                    <option value="Oct" disabled={paidMonths.includes('Oct')}>
+                      OCT
+                    </option>
+                    <option value="Nov" disabled={paidMonths.includes('Nov')}>
+                      NOV
+                    </option>
+                    <option value="Dec" disabled={paidMonths.includes('Dec')}>
+                      DEC
+                    </option>
                   </Select>
                 </div>
                 <div className="max-w-md">
@@ -120,6 +156,7 @@ const PaymentModal = ({ openModal, closeModal, item, id }) => {
                 singleEmployee={singleEmployee}
                 month={selectedMonth}
                 year={selectedYear}
+                handleMonthSelection={handleMonthSelection}
               ></CheckoutForm>
             </Elements>
 

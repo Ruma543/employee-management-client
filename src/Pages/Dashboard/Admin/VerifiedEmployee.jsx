@@ -48,17 +48,17 @@ const VerifiedEmployee = () => {
     });
   };
   return (
-    <div>
+    <div className="lg:w-11/12 mx-auto">
       {/* <h3>{verifiedEmployee.length}</h3> */}
       <SectionTitle
         subHeading="our employee our pride"
         heading={'Our All Employee'}
       ></SectionTitle>
       {loading ? (
-        <p>loading</p>
+        <p>loading..</p>
       ) : (
         <div>
-          <div className="overflow-x-auto">
+          <div className="overflow-x-auto lg:w-11/12 mx-auto">
             <Table striped>
               <Table.Head>
                 <Table.HeadCell>Name</Table.HeadCell>

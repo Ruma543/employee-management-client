@@ -9,34 +9,44 @@ import Swal from 'sweetalert2';
 import PaymentModal from './Payment/PaymentModal';
 import Cart from './Payment/Cart';
 import SectionTitle from '../../../Shared/SectionTitle/SectionTitle';
+import { useQuery } from '@tanstack/react-query';
 
 const AllEmployee = () => {
   const { user } = useAuth();
-  const [allEmployee, setAllEmployee] = useState([]);
+  // const [allEmployee, setAllEmployee] = useState([]);
   const [openModal, setOpenModal] = useState(false);
   const [id, setId] = useState('');
   const axiosSecure = useAxiosSecure();
   // console.log(id);
   // console.log(user.role);
   // const role = employee;
-  useEffect(() => {
-    if (user) {
-      axiosSecure.get(`/employees/hr`).then(res => {
-        // console.log(res.data);
-        setAllEmployee(res.data);
-      });
-    }
-  }, []);
 
+  const { refetch, data: allEmployee = [] } = useQuery({
+    queryKey: ['allEmployee'],
+    queryFn: async () => {
+      const res = await axiosSecure.get('/employees/hr');
+      return res.data;
+    },
+  });
+  // useEffect(() => {
+  //   if (user) {
+  //     axiosSecure.get(`/employees/hr`).then(res => {
+  //       // console.log(res.data);
+  //       setAllEmployee(res.data);
+  //     });
+  //   }
+  // }, []);
+  console.log(allEmployee);
   const handleMakeVerified = _id => {
     // console.log(_id);
     axiosSecure.patch(`/employees/${_id}`).then(res => {
       console.log(res.data);
       if (res.data.modifiedCount > 0) {
+        refetch();
         Swal.fire({
           position: 'top-end',
           icon: 'success',
-          title: ` ${res.data.name} is verified now`,
+          title: ` This employee is verified now`,
           showConfirmButton: false,
           timer: 1500,
         });

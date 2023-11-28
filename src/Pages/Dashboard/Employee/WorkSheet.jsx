@@ -9,6 +9,7 @@ import useAuth from '../../../Hook/useAuth';
 import useAxiosSecure from '../../../Hook/useAxiosSecure';
 import WorkSheetTable from './WorkSheetTable';
 import { useQuery } from '@tanstack/react-query';
+import SectionTitle from '../../../Shared/SectionTitle/SectionTitle';
 
 const WorkSheet = () => {
   const [startDate, setStartDate] = useState(new Date());
@@ -63,6 +64,10 @@ const WorkSheet = () => {
   console.log(work);
   return (
     <div>
+      <SectionTitle
+        heading="Employee Worksheet"
+        subHeading="Submit your work properly"
+      ></SectionTitle>
       <form onSubmit={handleSubmit} className="grid grid-cols-4 gap-4">
         <div className="max-w-md">
           <div className="mb-2 block">

@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import useAxiosSecure from '../../../Hook/useAxiosSecure';
 import { Select, Table } from 'flowbite-react';
 import useAuth from '../../../Hook/useAuth';
+import SectionTitle from '../../../Shared/SectionTitle/SectionTitle';
 
 const Progress = () => {
   const { user } = useAuth();
@@ -39,8 +40,12 @@ const Progress = () => {
 
   return (
     <div className="overflow-x-auto">
+      <SectionTitle
+        subHeading="All Submitted Work-Sheet"
+        heading="All work-Sheet"
+      ></SectionTitle>
       <div>
-        <div className="w-1/2 flex">
+        <div className=" Lg:w-1/2 w-3/4 mx-auto flex">
           <Select
             value={selectedEmployee}
             onChange={e => setSelectedEmployee(e.target.value)}
@@ -65,7 +70,7 @@ const Progress = () => {
           </Select>
         </div>
       </div>
-      <Table striped>
+      <Table className="w-11/12 mx-auto">
         <Table.Head>
           {/* name dropdown */}
           <Table.HeadCell>Name dropdown</Table.HeadCell>
@@ -77,7 +82,7 @@ const Progress = () => {
           {filteredWorkSheet.map(item => (
             <Table.Row
               key={item._id}
-              className="bg-white dark:border-gray-700 dark:bg-gray-800"
+              className="bg-purple-300 dark:border-gray-700 dark:bg-gray-800"
             >
               <Table.Cell>{item.name}</Table.Cell>
               <Table.Cell>{item.date}</Table.Cell>

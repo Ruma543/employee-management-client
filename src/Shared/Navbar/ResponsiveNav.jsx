@@ -77,9 +77,6 @@ function ResponsiveNav(props) {
               {link.Name}
             </NavLink>
           </ListItem>
-          //   <ListItemButton sx={{ textAlign: 'center' }}>
-          //     <ListItemText primary={item} />
-          //   </ListItemButton>
         ))}
       </List>
     </Box>
@@ -89,9 +86,9 @@ function ResponsiveNav(props) {
     window !== undefined ? () => window().document.body : undefined;
 
   return (
-    <Box sx={{ display: 'flex' }}>
+    <Box sx={{ display: 'flex', justify: 'between' }}>
       <CssBaseline />
-      <AppBar component="nav">
+      <AppBar component="nav" sx={{ backgroundColor: '#0a3d62' }}>
         <Toolbar>
           <IconButton
             color="inherit"
@@ -103,7 +100,7 @@ function ResponsiveNav(props) {
             <MenuIcon />
           </IconButton>
           <Typography
-            variant="h6"
+            variant="h4"
             component="div"
             sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' } }}
           >
@@ -114,15 +111,16 @@ function ResponsiveNav(props) {
               <NavLink
                 to={link.path}
                 key={link?.path}
-                sx={{ color: '#0a3d62' }}
+                sx={{
+                  color: '#0a3d62',
+                  mr: 4,
+                  display: 'flex',
+                  justify: 'around',
+                }}
               >
                 {link.Name}
               </NavLink>
             ))}
-
-            {/* // {
-//   navlinks?.map(link => <Navlink to={link?.path}>{link?.name}</Navlink>);
-// } */}
           </Box>
           <Tooltip title="Open settings">
             {user ? (
@@ -131,7 +129,7 @@ function ResponsiveNav(props) {
                   onClick={handleLogOut}
                   sx={{ p: 1, color: 'white' }}
                 >
-                  logout
+                  Logout
                 </IconButton>
                 <IconButton
                   // onClick={handleOpenUserMenu}
@@ -143,7 +141,7 @@ function ResponsiveNav(props) {
             ) : (
               <>
                 <Link to="/login">
-                  <IconButton sx={{ color: 'white' }}>login</IconButton>
+                  <IconButton sx={{ color: 'white' }}>Login</IconButton>
                 </Link>
                 <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
               </>
@@ -158,7 +156,7 @@ function ResponsiveNav(props) {
           open={mobileOpen}
           onClose={handleDrawerToggle}
           ModalProps={{
-            keepMounted: true, // Better open performance on mobile.
+            keepMounted: true,
           }}
           sx={{
             display: { xs: 'block', sm: 'none' },
@@ -171,13 +169,9 @@ function ResponsiveNav(props) {
           {drawer}
         </Drawer>
       </nav>
-      <Box component="main" sx={{ p: 3 }}>
-        <Toolbar />
-      </Box>
     </Box>
   );
 }
-S;
 ResponsiveNav.propTypes = {
   /**
    * Injected by the documentation to work in an iframe.
