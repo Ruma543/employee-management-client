@@ -73,7 +73,11 @@ function ResponsiveNav(props) {
       <List>
         {navLinks?.map(link => (
           <ListItem key={link.path} disablePadding>
-            <NavLink to={link.path} key={link.path} sx={{ color: '#0a3d62' }}>
+            <NavLink
+              to={link.path}
+              key={link.path}
+              sx={{ color: '#0a3d62', p: 10 }}
+            >
               {link.Name}
             </NavLink>
           </ListItem>
@@ -120,7 +124,6 @@ function ResponsiveNav(props) {
                 }}
               >
                 <IconButton sx={{ p: 1, color: 'white', fontSize: '16px' }}>
-                  {' '}
                   {link.Name}
                 </IconButton>
               </NavLink>

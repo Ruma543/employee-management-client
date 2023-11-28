@@ -1,8 +1,26 @@
-# React + Vite
+### Different features and functionalities of my website:
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+1. In this project, employees face role-based registration. Employees input
+   their email, password, and details such as bank account number, salary,
+   designation, and upload their photo. Only registered employees can log in.
 
-Currently, two official plugins are available:
+2. Only registered employees can access the dashboard. The dashboard menu is
+   decorated based on the employee's role. If the employee is an admin,
+   admin-related routes are displayed; if an HR, HR-related routes are shown,
+   and if only an employee, employee-related routes are visible.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+3. In the HR route, HR can view all employee information in a table. HR can
+   verify employees and pay the salary of verified employees. If the employee is
+   verified, clicking the pay button opens a modal for HR to process the salary
+   payment. The table also includes a details button to view a user-specific
+   profile and a bar chart based on their salary. The HR route also displays all
+   submitted work in the progress page.
+
+4. In the Employee Route, employees can see the monthly history of their salary
+   in a table. The earliest month's salary is displayed in the first row,
+   followed by payment information for past months. In the Work Sheet route,
+   employees can add and view submitted work data in a table.
+
+5. In the Admin Route, admins can view all verified employees in a table. Admins
+   can promote employees to HR and terminate employment. If an employee is
+   fired, the fired button is displayed.
