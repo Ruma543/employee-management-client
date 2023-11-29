@@ -10,8 +10,47 @@ import InfiniteScroll from 'react-infinite-scroll-component';
 
 const PaymentHistory = () => {
   const [payHistory, setPayHistory] = useState([]);
+  const [page, setPage] = useState(0);
   const axiosSecure = useAxiosSecure();
   const { user, loading } = useAuth();
+
+  // try for pagination
+  // const getPayment = async () => {
+  //   try {
+  //     const res = await axiosSecure.get(`/payment/${user.email}?page=${page}`);
+  //     return res.data;
+  //   } catch (error) {
+  //     throw error.response ? error.response.data : error.message;
+  //   }
+  // };
+  // const { data, isLoading, isError, error } = useQuery({
+  //   queryKey: ['data', page],
+  //   queryFn: getPayment,
+  // });
+  // console.log(data);
+  // // const paymentResult = data && data.result ? data.result : [];
+  // // console.log(paymentResult);
+  // const paymentCount = data && data.paymentCount ? data.paymentCount : 1;
+  // console.log(paymentCount);
+  // const paymentResult = data ? data : [];
+  // console.log(paymentResult);
+  // const totalPage = Math.ceil(paymentCount / 5);
+  // const pages = [...new Array(totalPage).fill(0)];
+  // console.log(pages);
+
+  // console.log(data.paymentCount);
+  // const {
+  //   data: { result, paymentCount },
+  // } = useQuery({
+  //   queryKey: ['payments', page],
+  //   queryFn: async () => {
+  //     const res = axiosSecure.get(`/payment/${user.email}&page=${page}`);
+  //     console.log(res.data);
+  //   },
+  //   initialData: { result: [], paymentCount: 0 },
+  // });
+  // console.log(result);
+
   // const getPayment = async ({ pageParams = 0 }) => {
   //   const res = await axiosSecure.get(
   //     `/payment/${user.email}?limit=5&offset${pageParams}`
@@ -36,6 +75,8 @@ const PaymentHistory = () => {
   // }, []);
   // console.log(payments);
   // const payments = 100;
+  // aita first
+
   useEffect(() => {
     axiosSecure.get(`/payment/${user?.email}`).then(res => {
       console.log(res.data);
@@ -43,6 +84,7 @@ const PaymentHistory = () => {
         return a.month.localeCompare(b.month);
       });
       setPayHistory(sortedPayHistory);
+      // setPayHistory(res.data);
     });
   }, [user]);
   console.log(payHistory);
@@ -73,6 +115,12 @@ const PaymentHistory = () => {
         <PayTable payHistory={payHistory}></PayTable>
         // <PayTable result={result}></PayTable>
       )}
+
+      {/* {pages.map((item, index) => (
+        <button onClick={() => setPage(index)} key={index}>
+          {index + 1}
+        </button>
+      ))} */}
     </div>
   );
 };

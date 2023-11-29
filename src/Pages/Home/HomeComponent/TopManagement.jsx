@@ -23,11 +23,13 @@ const TopManagement = () => {
             key={item._id}
             className="rounded-lg shadow-lg grid lg:grid-cols-2 grid-cols-1  p-5"
           >
-            <img className="h-56 rounded-full " src={item.image} alt="" />
-            <div className="flex flex-col items-center">
-              <h3>{item.name}</h3>
-              <h3>{item.designation}</h3>
-              <h3> More then 10 years With us</h3>
+            <div className="flex items-center justify-center">
+              <img className="h-56 rounded-full " src={item.image} alt="" />
+            </div>
+            <div className="flex flex-col items-center justify-center">
+              <h3 className="text-xl font-semibold">{item.name}</h3>
+              <h3 className="text-lg font-semibold">{item.designation}</h3>
+              <h3 className="text-sm "> More then 10 years With us</h3>
             </div>
           </div>
         ))}
