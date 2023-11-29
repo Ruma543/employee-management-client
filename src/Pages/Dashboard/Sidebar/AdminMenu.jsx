@@ -22,22 +22,22 @@ const AdminMenu = ({ open }) => {
       path: '/dashboard/allEmployee',
       icon: <FcBusinessman />,
     },
-    {
-      Name: 'Payment History',
-      path: '/dashboard/paymentHistory',
-      icon: <FaMoneyBillAlt />,
-    },
+    // {
+    //   Name: 'Payment History',
+    //   path: '/dashboard/paymentHistory',
+    //   icon: <FaMoneyBillAlt />,
+    // },
     {
       Name: 'Progress',
       path: '/dashboard/progress',
       icon: <FcBullish />,
     },
 
-    {
-      Name: 'Worksheet',
-      path: '/dashboard/workSheet',
-      icon: <FcNews />,
-    },
+    // {
+    //   Name: 'Worksheet',
+    //   path: '/dashboard/workSheet',
+    //   icon: <FcNews />,
+    // },
     {
       Name: 'Home',
       path: '/',

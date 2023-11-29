@@ -3,29 +3,29 @@ import { FaMoneyBillAlt } from 'react-icons/fa';
 import { FcBullish, FcBusinessman, FcHome, FcNews } from 'react-icons/fc';
 import { NavLink } from 'react-router-dom';
 
-const HrMenu = () => {
+const HrMenu = ({ open }) => {
   const hrMenu = [
     {
       Name: 'All Employee',
       path: '/dashboard/allEmployee',
       icon: <FcBusinessman />,
     },
-    {
-      Name: 'Payment History',
-      path: '/dashboard/paymentHistory',
-      icon: <FaMoneyBillAlt />,
-    },
+    // {
+    //   Name: 'Payment History',
+    //   path: '/dashboard/paymentHistory',
+    //   icon: <FaMoneyBillAlt />,
+    // },
     {
       Name: 'Progress',
       path: '/dashboard/progress',
       icon: <FcBullish />,
     },
 
-    {
-      Name: 'Worksheet',
-      path: '/dashboard/workSheet',
-      icon: <FcNews />,
-    },
+    // {
+    //   Name: 'Worksheet',
+    //   path: '/dashboard/workSheet',
+    //   icon: <FcNews />,
+    // },
     {
       Name: 'Home',
       path: '/',
