@@ -21,7 +21,7 @@ const Login = () => {
         console.log(user);
         reset();
         Swal.fire({
-          position: 'top-end',
+          position: 'middle-end',
           icon: 'success',
           title: 'user login successfully',
           showConfirmButton: false,
@@ -32,7 +32,7 @@ const Login = () => {
       })
       .catch(error => {
         Swal.fire({
-          position: 'top-end',
+          position: 'middle-end',
           icon: 'error',
           title: 'Please login with verified password',
           showConfirmButton: false,

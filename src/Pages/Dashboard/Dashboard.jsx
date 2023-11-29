@@ -25,7 +25,7 @@ const Dashboard = () => {
         style={{ backgroundColor: '#0a3d62' }}
       >
         <FaArrowLeft
-          className={`absolute cursor-pointer -right-3 top-9 w-7 h-7 bg-black
+          className={`absolute cursor-pointer -right-3 top-9 w-5 h-5 bg-blue-600
             rounded-full text-white  ${!open && 'rotate-180'}`}
           onClick={() => setOpen(!open)}
         />
@@ -54,6 +54,9 @@ const Dashboard = () => {
         )}
       </div>
       <div className="h-screen w-4/5 lg:w-11/12 mx-auto px-1  lg:p-7">
+        <h3 className="text-blue-900 text-2xl font-semibold">
+          Welcome Back {user.displayName}
+        </h3>
         <Outlet></Outlet>
       </div>
     </div>

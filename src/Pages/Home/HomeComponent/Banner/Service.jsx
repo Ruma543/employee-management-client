@@ -11,11 +11,11 @@ const Service = () => {
   const axiosPublic = useAxiosPublic();
   useEffect(() => {
     axiosPublic.get('/service').then(res => {
-      console.log(res.data);
+      // console.log(res.data);
       setService(res.data);
     });
   }, []);
-  console.log(service);
+  // console.log(service);
 
   useEffect(() => {
     AOS.init();

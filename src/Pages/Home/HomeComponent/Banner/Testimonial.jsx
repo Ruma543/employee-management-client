@@ -13,11 +13,11 @@ const Testimonial = () => {
   const [review, setReview] = useState([]);
   useEffect(() => {
     axiosPublic.get('/userReviews').then(res => {
-      console.log(res.data);
+      // console.log(res.data);
       setReview(res.data);
     });
   }, []);
-  console.log(review);
+  // console.log(review);
   return (
     <div className="w-11/12 mx-auto">
       <SectionTitleHome

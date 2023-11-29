@@ -161,13 +161,6 @@ const PaymentModal = ({ openModal, closeModal, item, id }) => {
             </Elements>
 
             <div className="flex justify-center gap-4">
-              {/* <Button
-                color="success"
-                // onClick={() => setOpenModal(false)}
-              >
-                Pay
-              </Button> */}
-
               <Button
                 color="failure"
                 onClick={closeModal}

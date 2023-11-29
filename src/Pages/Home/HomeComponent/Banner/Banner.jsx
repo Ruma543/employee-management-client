@@ -35,18 +35,3 @@ const Banner = () => {
 };
 
 export default Banner;
-// import React from 'react';
-// const banner1 = 'https://i.ibb.co/gyytzN0/banner1.png';
-// const Banner = () => {
-//   return (
-//     <div
-//       style={{ backgroundColor: '#0a3d62' }}
-//       className="h-[70vh]"
-//       // className="lg:h-[80vh] h-full  w-11/12 mx-auto grid lg:grid-cols-2 grid-cols-1"
-//     >
-
-//     </div>
-//   );
-// };
-
-// export default Banner;

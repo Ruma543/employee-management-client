@@ -56,7 +56,7 @@ const Registration = () => {
                   reset();
                   // return alert('added successfuly');
                   Swal.fire({
-                    position: 'top-end',
+                    position: 'middle-end',
                     icon: 'success',
                     title: 'Employee add successfully',
                     showConfirmButton: false,
@@ -78,20 +78,11 @@ const Registration = () => {
     }
   };
   return (
-    <div
-      className="lg:w-3/5 w-11/12 mx-auto rounded-lg shadow-lg my-5 px-6 py-7 grid  grid-cols-1 "
-      // style={{
-      //   backgroundImage: `url(${registerimage})`,
-      //   backgroundSize: 'cover',
-      //   // borderRadius: '50%',
-      //   overflow: 'hidden',
-      //   // transition: 'transform 0.3s ease-in-out',
-      //   // transform: isHovered ? 'scale(1.2)' : 'scale(1)',
-      // }}
-    >
+    <div className="lg:w-3/5 w-11/12 mx-auto rounded-lg shadow-lg my-5 px-6 py-7 grid  grid-cols-1 ">
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className="px-5 bg-black/90 py-6 rounded-lg text-white"
+        className="px-5 py-6 rounded-lg text-white"
+        style={{ backgroundColor: '#0a3d62' }}
       >
         <p className="text-center text">
           Already Register Please{' '}
@@ -259,66 +250,3 @@ const Registration = () => {
 };
 
 export default Registration;
-
-// import React from 'react';
-// import Box from '@mui/material/Box';
-// import TextField from '@mui/material/TextField';
-// import { Container } from '@mui/material';
-// import { ThemeProvider } from '@mui/material/styles';
-// // import { createTheme } from '@mui/material/styles';
-// import { createTheme } from '@mui/material';
-// // import { ThemeProvider } from '@mui/system/styles';
-// // import { createTheme } from '@mui/material/styles';
-// // import { styled } from '@mui/material/styles';
-// // import Button from '@mui/material/Button';
-// // import CloudUploadIcon from '@mui/icons-material/CloudUpload';
-
-// // const VisuallyHiddenInput = styled('input')({
-// //   clip: 'rect(0 0 0 0)',
-// //   clipPath: 'inset(50%)',
-// //   height: 1,
-// //   overflow: 'hidden',
-// //   position: 'absolute',
-// //   bottom: 0,
-// //   left: 0,
-// //   whiteSpace: 'nowrap',
-// //   width: 1,
-// // });
-
-// const Registration = () => {
-//   const theme = createTheme();
-//   return (
-//     <ThemeProvider theme={theme}>
-//       <Container sx={{ width: '4/5', margin: 'auto' }}>
-//         <Box
-//           component="form"
-//           sx={{
-//             '& > :not(style)': { m: 1, width: 'calc(33.33% - 8px)' },
-//             //  { m: 1, width: '25ch' },
-//             display: 'flex',
-//             flexDirection: 'row',
-//             flexWrap: 'wrap',
-//             background: 'transparent',
-//           }}
-//           noValidate
-//           autoComplete="off"
-//         >
-//           <TextField id="filled-basic-1" label="Name" variant="filled" />
-//           <TextField id="filled-basic-2" label="Name" variant="filled" />
-//           <TextField id="filled-basic-3" label="Name" variant="filled" />
-//           <TextField id="filled-basic-3" label="Name" variant="filled" />
-//           {/* <Button
-//           component="label"
-//           variant="contained"
-//           // startIcon={<CloudUploadIcon />}
-//         >
-//           Upload file
-//           <VisuallyHiddenInput type="file" />
-//         </Button> */}
-//         </Box>
-//       </Container>
-//     </ThemeProvider>
-//   );
-// };
-
-// export default Registration;

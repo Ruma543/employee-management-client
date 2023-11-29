@@ -24,3 +24,5 @@
 5. In the Admin Route, admins can view all verified employees in a table. Admins
    can promote employees to HR and terminate employment. If an employee is
    fired, the fired button is displayed.
+
+### website client site link: https://employee-management-client.web.app

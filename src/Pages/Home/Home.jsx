@@ -5,6 +5,7 @@ import Testimonial from './HomeComponent/Banner/Testimonial';
 import Footer from '../../Shared/Footer/Footer';
 import Drawer from '../Dashboard/Drawer';
 import Subscribe from './HomeComponent/Subscribe';
+import TopManagement from './HomeComponent/TopManagement';
 
 const Home = () => {
   return (
@@ -12,6 +13,7 @@ const Home = () => {
       <Banner></Banner>
       <Service></Service>
       <Testimonial></Testimonial>
+      <TopManagement></TopManagement>
       <Subscribe></Subscribe>
       <Footer></Footer>
       {/* <Drawer></Drawer> */}

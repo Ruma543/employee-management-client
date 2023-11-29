@@ -60,7 +60,7 @@ const AllEmployee = () => {
     <div className="w-4/5 mx-auto">
       <SectionTitle
         heading="Our All Employee"
-        subHeading={'Our employee our pride'}
+        subHeading="We care all our employee "
       ></SectionTitle>
       <div>
         <div className="overflow-x-auto">

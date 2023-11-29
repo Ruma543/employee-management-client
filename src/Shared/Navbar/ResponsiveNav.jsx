@@ -19,13 +19,9 @@ import Tooltip from '@mui/material/Tooltip';
 import Avatar from '@mui/material/Avatar';
 import useAuth from '../../Hook/useAuth';
 import Swal from 'sweetalert2';
-
+// import logo from '../../assets/lo.png';
 const drawerWidth = 240;
-// const navItems = ['Home', 'About', 'Contact'];
-
-// {
-//   navlinks?.map(link => <Navlink to={link?.path}>{link?.name}</Navlink>);
-// }
+const logo = 'https://i.ibb.co/gSfGfzT/small-1939-656411523682f.png';
 const navLinks = [
   {
     Name: 'Home',
@@ -50,7 +46,7 @@ function ResponsiveNav(props) {
     logOut()
       .then(() => {
         Swal.fire({
-          position: 'top-end',
+          position: 'middle-end',
           icon: 'success',
           title: 'user logout successfully',
           showConfirmButton: false,
@@ -103,6 +99,10 @@ function ResponsiveNav(props) {
           >
             <MenuIcon />
           </IconButton>
+          <IconButton sx={{ p: 2 }}>
+            <Avatar alt="Remy Sharp" src={logo} />
+          </IconButton>
+          {/* <IconButton>{logo}</IconButton> */}
           <Typography
             variant="h4"
             component="div"

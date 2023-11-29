@@ -51,7 +51,7 @@ const VerifiedEmployee = () => {
     <div className="lg:w-11/12 mx-auto">
       <SectionTitle
         subHeading="our employee our pride"
-        heading={'Our All Employee'}
+        heading={'Our All verified Employee'}
       ></SectionTitle>
       {loading ? (
         <p>loading..</p>
