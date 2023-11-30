@@ -13,14 +13,14 @@ const VerifiedEmployee = () => {
   const [verifiedEmployee, setVerifiedEmployee] = useState([]);
   const [isGrid, setIsGrid] = useState(false);
   const axiosSecure = useAxiosSecure();
-  const [refetch] = useEmployee();
+  const [employee, refetch] = useEmployee();
   console.log(refetch);
-  useEffect(() => {
-    axiosSecure.get(`/employees/employeeFind/${user?.email}`).then(res => {
-      console.log(res.data);
-      setVerifiedEmployee(res.data);
-    });
-  }, [user.email, axiosSecure]);
+  // useEffect(() => {
+  //   axiosSecure.get(`/employees/employeeFind/${user?.email}`).then(res => {
+  //     console.log(res.data);
+  //     setVerifiedEmployee(res.data);
+  //   });
+  // }, [user.email, axiosSecure]);
   const handleFired = _id => {
     console.log(_id);
     Swal.fire({
@@ -92,7 +92,7 @@ const VerifiedEmployee = () => {
                   <Table.HeadCell>Fire</Table.HeadCell>
                 </Table.Head>
                 <Table.Body className="divide-y">
-                  {verifiedEmployee.map(item => (
+                  {employee?.map(item => (
                     <Table.Row
                       key={item._id}
                       className="bg-white dark:border-gray-700 dark:bg-gray-800"
@@ -129,7 +129,7 @@ const VerifiedEmployee = () => {
             </div>
           ) : (
             <div className="grid lg:grid-cols-3 grid-cols-1 gap-5">
-              {verifiedEmployee.map(item => (
+              {employee.map(item => (
                 <div
                   key={item._id}
                   className="rounded-lg p-5 space-y-3 shadow-lg"
@@ -242,3 +242,17 @@ export default VerifiedEmployee;
 //     //  setBookings(remaining);
 //    }
 //  });
+// const { user } = useAuth();
+// const axiosSecure = useAxiosSecure();
+// const { data: employee, refetch } = useQuery({
+//   queryKey: [user?.email, ' employee'],
+//   enabled: !!user?.email,
+//   queryFn: async () => {
+//     const res = await axiosSecure.get(`/employees/employeeFind/${user?.email}`);
+
+//     return res.data;
+//   },
+// });
+// return [employee, refetch];
+
+// https://employee-management-server-tau.vercel.app

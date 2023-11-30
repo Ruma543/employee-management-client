@@ -41,11 +41,16 @@ const AuthProvider = ({ children }) => {
       setLoading(false);
       if (currentUser) {
         const userInfo = { email: currentUser.email };
-        axios.post('http://localhost:5000/jwt', userInfo).then(res => {
-          if (res.data.token) {
-            localStorage.setItem('access-token', res.data.token);
-          }
-        });
+        axios
+          .post(
+            'https://employee-management-server-tau.vercel.app/jwt',
+            userInfo
+          )
+          .then(res => {
+            if (res.data.token) {
+              localStorage.setItem('access-token', res.data.token);
+            }
+          });
       } else {
         localStorage.removeItem('access-token');
       }
