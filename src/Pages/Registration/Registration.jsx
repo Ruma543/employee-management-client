@@ -47,10 +47,7 @@ const Registration = () => {
             };
             console.log(employeeInfo);
             axios
-              .post(
-                'https://employee-management-server-tau.vercel.app/employees',
-                employeeInfo
-              )
+              .post('http://localhost:5000/employees', employeeInfo)
               .then(res => {
                 if (res.data.insertedId) {
                   reset();

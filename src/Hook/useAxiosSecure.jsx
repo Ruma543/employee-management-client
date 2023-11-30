@@ -4,7 +4,7 @@ import useAuth from './useAuth';
 import { useNavigate } from 'react-router-dom';
 
 const axiosSecure = axios.create({
-  baseURL: 'https://employee-management-server-tau.vercel.app',
+  baseURL: 'http://localhost:5000',
 });
 const useAxiosSecure = () => {
   const { logOut } = useAuth();

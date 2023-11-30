@@ -6,29 +6,46 @@ import { Link } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import SectionTitle from '../../../Shared/SectionTitle/SectionTitle';
 import useAuth from '../../../Hook/useAuth';
+import useEmployee from '../../../Hook/useEmployee';
 
 const VerifiedEmployee = () => {
   const { user, loading } = useAuth();
   const [verifiedEmployee, setVerifiedEmployee] = useState([]);
   const [isGrid, setIsGrid] = useState(false);
   const axiosSecure = useAxiosSecure();
+  const [refetch] = useEmployee();
+  console.log(refetch);
   useEffect(() => {
     axiosSecure.get(`/employees/employeeFind/${user?.email}`).then(res => {
       console.log(res.data);
       setVerifiedEmployee(res.data);
     });
-  }, []);
+  }, [user.email, axiosSecure]);
   const handleFired = _id => {
     console.log(_id);
-    axiosSecure.patch(`/employees/fired/${_id}`).then(res => {
-      console.log(res.data);
-      if (res.data.modifiedCount > 0) {
-        Swal.fire({
-          position: 'top-end',
-          icon: 'success',
-          title: ` ${res.data.name} is Fired now`,
-          showConfirmButton: false,
-          timer: 1500,
+    Swal.fire({
+      title: 'Are you sure?',
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes,fired!',
+    }).then(result => {
+      if (result.isConfirmed) {
+        axiosSecure.patch(`/employees/fired/${_id}`).then(res => {
+          console.log(res.data);
+          if (res.data.modifiedCount > 0) {
+            refetch();
+
+            Swal.fire({
+              position: 'top-end',
+              icon: 'success',
+              title: ` ${res.data.name} is Fired now`,
+              showConfirmButton: false,
+              timer: 1500,
+            });
+          }
         });
       }
     });
@@ -37,6 +54,7 @@ const VerifiedEmployee = () => {
     console.log(_id);
     axiosSecure.patch(`/employees/admin/${_id}`).then(res => {
       console.log(res.data);
+      refetch();
       if (res.data.modifiedCount > 0) {
         Swal.fire({
           position: 'top-end',
@@ -196,3 +214,31 @@ export default VerifiedEmployee;
 //      </Table.Body>
 //    </Table>
 //  </div>;
+// Swal.fire({
+//   text: 'Your file has been deleted.',
+//   title: ` ${res.data.name} is Fired now`,
+//   icon: 'success',
+// });
+
+// if (res.data.modifiedCount > 0) {
+//   Swal.fire({
+//     position: 'top-end',
+//     icon: 'success',
+//     title: ` ${res.data.name} is Fired now`,
+//     showConfirmButton: false,
+//     timer: 1500,
+//   });
+// }
+//  axiosSecure.delete(`/bookings/${_id}`).then(res => {
+//    console.log(res.data);
+//    if (res?.data?.deletedCount > 0) {
+//      Swal.fire({
+//        title: 'Deleted!',
+//        text: 'Your file has been deleted.',
+//        icon: 'success',
+//      });
+
+//     //  const remaining = bookings.filter(item => item._id !== _id);
+//     //  setBookings(remaining);
+//    }
+//  });
