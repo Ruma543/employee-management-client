@@ -7,87 +7,69 @@ import { useInfiniteQuery, useQuery } from '@tanstack/react-query';
 import { signInWithEmailLink } from 'firebase/auth';
 import { LastPage } from '@mui/icons-material';
 import InfiniteScroll from 'react-infinite-scroll-component';
+import { FcNext, FcPrevious } from 'react-icons/fc';
 
 const PaymentHistory = () => {
   const [payHistory, setPayHistory] = useState([]);
-  const [page, setPage] = useState(0);
+  const [page, setPage] = useState(1);
+  const [date, setDate] = useState();
   const axiosSecure = useAxiosSecure();
   const { user, loading } = useAuth();
-
+  console.log(user.email);
   // try for pagination
-  // const getPayment = async () => {
-  //   try {
-  //     const res = await axiosSecure.get(`/payment/${user.email}?page=${page}`);
-  //     return res.data;
-  //   } catch (error) {
-  //     throw error.response ? error.response.data : error.message;
-  //   }
-  // };
-  // const { data, isLoading, isError, error } = useQuery({
-  //   queryKey: ['data', page],
-  //   queryFn: getPayment,
-  // });
-  // console.log(data);
-  // // const paymentResult = data && data.result ? data.result : [];
-  // // console.log(paymentResult);
-  // const paymentCount = data && data.paymentCount ? data.paymentCount : 1;
-  // console.log(paymentCount);
-  // const paymentResult = data ? data : [];
-  // console.log(paymentResult);
-  // const totalPage = Math.ceil(paymentCount / 5);
-  // const pages = [...new Array(totalPage).fill(0)];
-  // console.log(pages);
+  const getPayment = async () => {
+    try {
+      if (!user.email) {
+        throw new Error('User email is undefined');
+      } else {
+        const res = await axiosSecure.get(
+          `/payment/${user.email}?sortField=date&sortOrder=desc&page=${page}&limit=${limit}`
+        );
 
-  // console.log(data.paymentCount);
-  // const {
-  //   data: { result, paymentCount },
-  // } = useQuery({
-  //   queryKey: ['payments', page],
-  //   queryFn: async () => {
-  //     const res = axiosSecure.get(`/payment/${user.email}&page=${page}`);
+        return res;
+      }
+    } catch (error) {
+      throw error.response ? error.response.data : error.message;
+    }
+  };
+  const { data, isLoading, isError, error } = useQuery({
+    queryKey: ['payment', date, page],
+    queryFn: getPayment,
+    initialData: { result: [], paymentCount: 0 },
+  });
+  // console.log(data);
+
+  const limit = 5;
+  const totalPage = data?.data?.total
+    ? Math.ceil(parseInt(data.data.total) / limit)
+    : 0;
+  // const totalPage = Math.ceil(parseInt(data?.data?.total) / limit);
+  console.log(totalPage);
+
+  const handlePrev = () => {
+    if (page > 1) {
+      setPage(page - 1);
+      console.log(page);
+    }
+  };
+  const handleNext = () => {
+    if (page < totalPage) {
+      setPage(page + 1);
+      console.log(page);
+    }
+  };
+
+  // useEffect(() => {
+  //   axiosSecure.get(`/payment/${user?.email}`).then(res => {
   //     console.log(res.data);
-  //   },
-  //   initialData: { result: [], paymentCount: 0 },
-  // });
-  // console.log(result);
-
-  // const getPayment = async ({ pageParams = 0 }) => {
-  //   const res = await axiosSecure.get(
-  //     `/payment/${user.email}?limit=5&offset${pageParams}`
-  //   );
-  //   const data = res.data;
-  //   console.log(data);
-  //   return { ...data, prevOffset: pageParams };
-  // };
-  // const { data, fetchNextPage, hasNextPage } = useInfiniteQuery({
-  //   queryKey: ['payments'],
-  //   queryFn: getPayment,
-  //   getNextPageParam: LastPage => {
-  //     if (LastPage.prevOffset + 10 > LastPage.paymentCount) {
-  //       return false;
-  //     }
-  //     return LastPage.prevOffset + 5;
-  //   },
-  // });
-  // console.log(data);
-  // const payments = data?.pages.reduce((acc, page) => {
-  //   return [...acc, page.payments];
-  // }, []);
-  // console.log(payments);
-  // const payments = 100;
-  // aita first
-
-  useEffect(() => {
-    axiosSecure.get(`/payment/${user?.email}`).then(res => {
-      console.log(res.data);
-      const sortedPayHistory = res.data.sort((a, b) => {
-        return a.month.localeCompare(b.month);
-      });
-      setPayHistory(sortedPayHistory);
-      // setPayHistory(res.data);
-    });
-  }, [user]);
-  console.log(payHistory);
+  //     const sortedPayHistory = res.data.sort((a, b) => {
+  //       return a.month.localeCompare(b.month);
+  //     });
+  //     setPayHistory(sortedPayHistory);
+  //     // setPayHistory(res.data);
+  //   });
+  // }, [user]);
+  // console.log(payHistory);
   return (
     <div>
       <SectionTitle
@@ -95,34 +77,54 @@ const PaymentHistory = () => {
         subHeading={'your monthly payable salary'}
       ></SectionTitle>
 
-      {/* <div>
-        <InfiniteScroll
-          dataLength={payments ? payments.length : 0}
-          next={() => fetchNextPage()}
-          hasMore={hasNextPage}
-          loader={<h4>Loading...</h4>}
-        >
-          {payments &&
-            payments.map((item, index) => (
-              <div key={item._id}>{item.bankAccount}</div>
-            ))}
-        </InfiniteScroll>
-      </div> */}
-
       {loading ? (
         <p>loading.....</p>
       ) : (
-        <PayTable payHistory={payHistory}></PayTable>
-        // <PayTable result={result}></PayTable>
-      )}
+        <>
+          <PayTable data={data?.data?.result}></PayTable>
 
-      {/* {pages.map((item, index) => (
-        <button onClick={() => setPage(index)} key={index}>
-          {index + 1}
-        </button>
-      ))} */}
+          <div className="flex justify-center items-center">
+            <button
+              className="bg-blue-900 h-7 w-7 rounded-full "
+              onClick={handlePrev}
+            >
+              <span>
+                <FcPrevious></FcPrevious>{' '}
+              </span>
+            </button>
+            {Array(totalPage)
+              .fill(0)
+              .map((item, index) => {
+                const pageNumber = index + 1;
+                return (
+                  <button
+                    key={pageNumber}
+                    onClick={() => setPage(pageNumber)}
+                    className={`${
+                      pageNumber === page
+                        ? 'bg-blue-400  h-7 w-7 m-2 rounded-full  '
+                        : ' bg-white  m-2 rounded-lg'
+                    }`}
+                  >
+                    {pageNumber}
+                  </button>
+                );
+              })}
+            <button
+              className="bg-blue-900 h-7 w-7 rounded-full "
+              onClick={handleNext}
+            >
+              <span>
+                <FcNext className="text-white text-center"></FcNext>
+              </span>
+            </button>
+          </div>
+        </>
+      )}
     </div>
   );
 };
 
 export default PaymentHistory;
+// https://employee-management-server-tau.vercel.app/
+// https://employee-management-server-tau.vercel.app

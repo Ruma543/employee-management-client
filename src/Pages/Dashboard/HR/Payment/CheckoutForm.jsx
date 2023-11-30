@@ -116,21 +116,21 @@ const CheckoutForm = ({
           year: year,
         };
         console.log(paymentInfo);
-
-        if (month !== '') {
-          const res = await axiosSecure.post('/payment', paymentInfo);
-          console.log('payment info', res.data);
-          if (res.data.insertedId) {
-            console.log('payment successfully');
-            Swal.fire({
-              position: 'top-center',
-              icon: 'success',
-              title: 'Payment done successfully',
-              showConfirmButton: false,
-              timer: 1500,
-            });
-          }
+        const res = await axiosSecure.post('/payment', paymentInfo);
+        console.log('payment info', res.data);
+        if (res.data.insertedId) {
+          console.log('payment successfully');
+          Swal.fire({
+            position: 'top-center',
+            icon: 'success',
+            title: 'Payment done successfully',
+            showConfirmButton: false,
+            timer: 1500,
+          });
         }
+        // if (month !== '') {
+
+        // }
         setProcessing(false);
       }
     }

@@ -4,7 +4,8 @@ import React, { PureComponent } from 'react';
 import { BarChart, Bar, ResponsiveContainer, XAxis, YAxis } from 'recharts';
 
 const BerChart = ({ employeeData }) => {
-  const barChartData = employeeData.map(data => ({
+  console.log(employeeData);
+  const barChartData = employeeData?.map(data => ({
     name: data.month,
     pv: parseInt(data.salary),
   }));

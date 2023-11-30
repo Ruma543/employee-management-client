@@ -30,7 +30,7 @@ const DetailsPage = () => {
   console.log(profile);
 
   useEffect(() => {
-    axiosSecure.get(`/payment/${email}`).then(res => {
+    axiosSecure.get(`/payment/s/${email}`).then(res => {
       console.log(res.data);
       setEmployeeData(res.data);
     });

@@ -1,8 +1,8 @@
 import { Table } from 'flowbite-react';
 import React from 'react';
 
-const PayTable = ({ payHistory }) => {
-  console.log(payHistory);
+const PayTable = ({ data }) => {
+  console.log(data);
   return (
     <div className="overflow-x-auto">
       <Table striped>
@@ -12,7 +12,7 @@ const PayTable = ({ payHistory }) => {
           <Table.HeadCell>Transaction Id</Table.HeadCell>
         </Table.Head>
         <Table.Body className="divide-y">
-          {payHistory.map(item => (
+          {data?.map(item => (
             <Table.Row
               key={item._id}
               className="bg-white dark:border-gray-700 dark:bg-gray-800"
