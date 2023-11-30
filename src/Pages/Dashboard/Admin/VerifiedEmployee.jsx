@@ -55,16 +55,16 @@ const VerifiedEmployee = () => {
         heading={'Our All verified Employee'}
       ></SectionTitle>
       {!isGrid ? (
-        <Button onClick={() => setIsGrid(true)}>Table View</Button>
+        <Button onClick={() => setIsGrid(true)}>Grid View</Button>
       ) : (
-        <Button onClick={() => setIsGrid(false)}>Grid view</Button>
+        <Button onClick={() => setIsGrid(false)}>Table view</Button>
       )}
 
       {loading ? (
         <p>loading..</p>
       ) : (
         <div>
-          {isGrid ? (
+          {!isGrid ? (
             <div className="overflow-x-auto">
               <Table striped>
                 <Table.Head>
