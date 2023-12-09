@@ -25,4 +25,12 @@
    can promote employees to HR and terminate employment. If an employee is
    fired, the fired button is displayed.
 
-### website client site link: https://employee-management-client.web.app
+### Technological Expertise
+
+- Utilized Material ui and React Flobite.
+- React Stripe.js for Payment implementation.
+- react-datepicker
+
+### server site Github link: https://github.com/Ruma543/employee-management-server
+
+### website client site link: https://taboo-arithmetic.surge.sh
