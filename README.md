@@ -31,6 +31,6 @@
 - React Stripe.js for Payment implementation.
 - react-datepicker
 
-### server site Github link: https://github.com/Ruma543/employee-management-server
+### server side Github link: https://github.com/Ruma543/employee-management-server
 
-### website client site link: https://taboo-arithmetic.surge.sh
+### website client side link: https://taboo-arithmetic.surge.sh
