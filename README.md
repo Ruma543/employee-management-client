@@ -30,7 +30,16 @@
 - Utilized Material ui and React Flobite.
 - React Stripe.js for Payment implementation.
 - react-datepicker
+- react-hook-form
 
 ### server side Github link: https://github.com/Ruma543/employee-management-server
 
 ### website client side link: https://taboo-arithmetic.surge.sh
+
+### Project selling line:
+
+- Empower your organization with role-based workforce management, leveraging
+  react-hook-form for seamless registration, React Stripe.js for secure
+  payments, and intuitive features for HR, employees, and admins,
+  revolutionizing efficiency and transparency in salary processing and employee
+  management.
